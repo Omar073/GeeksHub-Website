@@ -1,0 +1,2 @@
+This folder will hold the actual project from the back end to the front end of it, any files associated with the project should be put here and
+catogorized correctly so we don't suffer and have to chase our own tail looking for missing files
