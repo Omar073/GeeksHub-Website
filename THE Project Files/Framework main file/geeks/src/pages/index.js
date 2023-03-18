@@ -6,6 +6,7 @@ import Link from 'next/link'
 import 'bootstrap/dist/css/bootstrap.css'
 
 
+
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {

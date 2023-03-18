@@ -2,10 +2,11 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 
+
 export default class App extends React.Component {
 
     render(){
-       return(
+      return(
         <div>
         <title>Geek's Hub Login Page</title>
         <link rel="stylesheet" type="text/css" href="login%20style.css" />
@@ -35,5 +36,5 @@ export default class App extends React.Component {
         </div>
       </div>  
         )
-     }
+    }
 }
