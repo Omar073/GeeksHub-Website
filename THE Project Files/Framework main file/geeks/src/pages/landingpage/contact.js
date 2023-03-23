@@ -11,10 +11,10 @@ function Contact(){
     return(
         <div>
             <Navbar></Navbar>
-           
+          
             
              {/* main row */ }
-             <div class="row shadow-lg p-3 mb-5 bg-body rounded">
+            <div class="row shadow-lg p-3 mb-5 bg-body rounded">
                 {/* main col */ }
                     <div class="col-4 " >
                       <h3 class={thi.col1}>
