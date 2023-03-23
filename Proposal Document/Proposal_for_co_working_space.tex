@@ -1,0 +1,202 @@
+\documentclass[hidelinks,a4paper,12pt]{article}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage{graphicx}
+\usepackage{makecell}
+\usepackage[margin=0.7in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=false,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\usepackage[normalem]{ulem}
+\usepackage{xcolor}
+
+\renewcommand\theadalign{bc}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\theadgape{\Gape[4pt]}
+\renewcommand\cellgape{\Gape[4pt]}
+\graphicspath{ {./images/} }
+
+\usepackage{comment}
+  
+\usepackage[backend=biber,style=numeric-comp,sorting=none,]{biblatex}
+\addbibresource{references.bib} %Imports bibliography file
+
+%opening
+\title{Software Proposal Document for ....}
+\author{Omar Ahmed , Ahmed Mohamed, Kareem Ahmed, Youssef Mahmoud, Mazen Ahmed  \\
+Supervised by: Dr. Essam Eliwa, Eng. Omar Magdy}
+
+
+\begin{document}
+\maketitle
+\begin{table}[ht]
+
+\caption{Document version history}
+\begin{tabular}{|l|l|l|}
+\hline
+\thead{Proposal Version}    & \thead{Date} & \thead{Reason for Change}  \\ \hline
+1.0 & 25-Feb-2023   & \makecell{Proposal First version’s specifications are defined}   \\ \hline
+1.1 & 28-Feb-2023   & \makecell{System description updated} \\ \hline
+\end{tabular}
+
+\end{table}
+
+\begin{table}[ht]
+\begin{tabular}{cc}
+\thead{GitHub:}    & https://github.com/Mazen421/Software-Engineering-Project
+\end{tabular}
+\end{table}
+
+\medskip
+
+\begin{abstract}
+ This proposal outlines the development of a website for GeeksHub, a co-working space. The proposed solution is a replacement for the current manual registration of customers and all their data.\\
+
+ The website will allow customers to digitally check-in and check-out, purchase monthly subscriptions, book private rooms, and search for their data.\\
+
+ Staff members will be able to manage monthly subscriptions, calculate salaries depending on shifts, and issue warnings or blacklist customers.\\
+
+ The development process will involve using a combination of React.js and Node.js frameworks, with a focus on agile development methodologies and test-driven development.\\
+
+ The key expected outcome of the project is an efficient and effective co-working space management system that provides a seamless user experience for customers and staff members. This project is timely and relevant to the market as the demand for co-working spaces is rapidly increasing.The website will also allow customers to book private rooms, which can be viewed and managed by staff through a secure login.\\
+
+ Staff will have the ability to issue warnings or blacklist customers who violate the co-working space’s policies, and will be able to view detailed reports on customer check-in/out times, subscription purchases, and other data.\\
+ 
+The project will be developed using agile methodologies, with a focus on frequent testing and feedback from both customers and staff to ensure that the final product meets their needs and expectations.The expected outcome of the project is a user-friendly and efficient web application that streamlines the customer registration process and improves the overall experience for both customers and staff at GeeksHub co-working space. The system will increase efficiency, improve accuracy, reduce human error and help the co-working space increase its revenue stream.
+
+
+\newpage
+\end{abstract}
+\medskip
+\section{Introduction}
+\parindent
+\subsection{Background}
+GeeksHub is a coworking space that provides an innovative and collaborative environment for students, researchers, and academics. GeeksHub has been operating for several years and has established itself as a supportive environment for the tech savvy in the local community. However, GeeksHub has been facing challenges with their current subscription and registration systems, which are manual and time-consuming. This has resulted in delays and errors in the registration process, leading to a decrease in the customer experience. To address this issue, GeeksHub is proposing a new web-based system for their subscription and registration process.\\
+
+\subsection{Problem Statement}
+GeeksHub is facing significant challenges in their subscription and registration process due to their manual and paper-based system. Managing paper documents and Excel sheets has become time-consuming and error-prone, resulting in a poor customer experience. GeeksHub recognizes the need to modernize their subscription and registration process and proposes a new web-based system that will eliminate the need for paper documents and Excel sheets.\\
+
+
+\subsection{Motivation}
+
+GeeksHub's manual and paper-based subscription and registration system is an interesting problem because it is a common challenge faced by many businesses that rely on paper documents and manual processes. It is an interesting problem because it has a direct impact on the customer experience, which is essential for the success of any business.\\
+
+
+The problem occurs every time a new customer wants to register for GeeksHub's coworking space. The current system is time-consuming, and could lead to poor customer experience over misplaced documents and inaccurate data entry.\\
+
+Currently, GeeksHub has not implemented any digital solutions and continues to use a manual system. So in an effort to modernize, they entrusted us to use time-proven concepts to develop a custom webpage to forgo the manual process and lead to a better user experience.\\
+
+The software will be designed to meet the specific needs of GeeksHub's registration process, integrate the software with their existing systems, and be intuitive enough to require little to no training. Additionally, the new system should be user-friendly, secure, and scalable to accommodate future growth. By implementing a new web-based system, GeeksHub can eliminate the need for paper documents and Excel sheets, streamline the registration process, and enhance the overall customer experience.
+ \pagebreak 
+
+\section{Project Description}
+The project aims to create a web application that allows users to book a space for a number of hours and view upfront how much they should pay at the desk.
+\parindent
+\medskip
+
+The main features of the application will be as follows:\\
+
+Registration and Login: Users can create an account by providing their details, including name, email address, and password. Users will need to verify their email address before they can access the application. Once registered, users can log in to the application using their email and password.\\
+
+Space Booking: Users can view the available spaces and select the one they want to book. They can choose the date, time and duration of their booking. The application will display the total cost of the booking based on the selected parameters. Staff members can register for users, and adjust the per hour price to allow for evolution / promotional sales.\\
+\\
+User Management: The application will store user data in a database. The staff can access this data to issue warnings or blacklist certain users if necessary. (eg. unpaid booking, disruptive behavior, etc ...)\\
+
+The application will be built using a modern web framework and will use a combination of HTML, CSS, and JavaScript for the front-end. The back-end will be implemented using a server-side programming language, such as React or Node.js. The database will be implemented using a popular database management system like firebase.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\linewidth]{Project desc.png}
+\caption{web application architecture}
+\label{fig:overview}
+\end{figure}
+\newpage
+
+\subsection{Objectives}
+Conduct a stakeholder analysis to identify the needs and requirements of Geekshub and its target audience, and use this information to develop the SRS within 2 weeks.\\
+
+Develop the SDD, outlining the website's features, functionality, and design elements, based on the SRS and industry best practices, within 3 weeks.\\
+
+Design the website layout and create mockups for approval by stakeholders, based on the SDD and user feedback, within 4 weeks.\\
+
+Develop the website's frontend, ensuring that it is responsive and mobile-friendly, based on the SDD and best practices.\\
+
+Develop a backend using Node.js and Firebase, as outlined in the SDD, to store user data securely and enable features such as user authentication.
+
+\subsection{Stakeholder}
+\subsubsection{Internal}
+Team Leader: Omar Ahmed\\
+Responsibilities: Overall project management and coordination.\\
+
+
+Team Member 1: Mazen Ahmed\\
+Responsibilities: Software development and programming.\\
+
+
+Team Member 2: Kareem Ahmed\\
+Responsibilities: Front-end development and   Design of system architecture.\\
+
+
+Team Member 3: Ahmed Mohammed\\
+Responsibilities: Back-end development and database management.\\
+
+
+Team Member 4: Youssef Mohammed\\
+Responsibilities: Testing and Documentation and reporting.\\ 
+
+\subsubsection{External}
+End Users:\\
+Customers of the co-working space who will use the website to manage their check-in and check-out time and subscriptions.\\
+
+
+Clients & Staff:\\
+The co-working space management, who requested the project to be developed.\\
+The staff that oversees co-working spaces that may have specific requirements for the website for the management of customer data and salaries. 
+
+\section{Similar System}
+\subsection{Academic}
+
+List down at least 1 paper from ACM or IEEE for similar work experience in the domain of your problem. Be sure that each paper you list include the following points
+
+\begin{enumerate}
+\item The main problem statement of the work.
+\item How the researchers contributed to solve the problem
+\item The dataset used by the researchers
+\item What main results the researchers reach.
+\item Criticize the paper
+\item Figure/s of the work (if available)
+\end{enumerate}
+
+\subsection{Business Applications}
+Describe available business applications in the market with figures.
+
+
+
+
+
+\section{Project Management and Deliverables}
+\subsection{Deliverables}
+\begin{itemize}
+\item What will the project produce? (program, reports, etc.)
+\item Describe in brief detail the features of each deliverable.
+\end{itemize}
+\subsection{Tasks and Time Plan}
+Use \textcolor{blue}{\href{https://trello.com/power-ups/58bd1f9aca72f48c8900574f}{Trello}} to create a time plan showing tasks and which team member is assigned to it of your project.\\ 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\linewidth]{images/trello_time_plan.png}
+\caption{Project time plan}
+\label{fig:timeplan}
+\end{figure}
+\newpage
+
+\printbibliography
+\end{document}
