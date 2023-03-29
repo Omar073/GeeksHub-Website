@@ -16,7 +16,7 @@ export default function contact() {
           url: "https://www.plutonium.saurish.com",
           title: "Geeks Hub",
           description: "GEEEKS  a co-working space ",
-         
+        
           site_name: "Geeks Hub",
         }}
         twitter={{
