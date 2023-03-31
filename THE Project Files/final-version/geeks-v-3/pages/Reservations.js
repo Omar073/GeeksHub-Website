@@ -5,7 +5,7 @@ import Adminbar from '@/components/Adminbar';
 export default function Subscribers_admin() {
   return (
     <div>
-      <Adminbar />
+      <Sidebar />
         <div className="p-4 sm:ml-64">
       <div className="grid grid-cols-1 overflow-x-auto shadow-md sm:rounded-lg">
         <div>
