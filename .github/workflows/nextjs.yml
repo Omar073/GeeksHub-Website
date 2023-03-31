@@ -22,21 +22,21 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          cd ${{ env.BASE_PATH }}
+          cd "${{ env.BASE_PATH }}"
           npm install
 
       - name: Build
         run: |
-          cd ${{ env.BASE_PATH }}
+          cd "${{ env.BASE_PATH }}"
           npm run build
 
       - name: Export
         run: |
-          cd ${{ env.BASE_PATH }}
+          cd "${{ env.BASE_PATH }}"
           npm run export
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
           branch: gh-pages
-          folder: ${{ env.BASE_PATH }}/out
+          folder: "${{ env.BASE_PATH }}"/out
