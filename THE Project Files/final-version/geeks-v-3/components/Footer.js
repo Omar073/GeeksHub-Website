@@ -24,7 +24,7 @@ export default function Footer() {
         <span className="inline-flex justify-center mt-4 sm:ml-auto sm:mt-3 sm:justify-start">
           <a
             aria-label="mail"
-            href="maito:me@saurish.com?subject=From Plutonium!"
+            href="https://accounts.google.com/InteractiveLogin/signinchooser?ifkv=AQMjQ7QaPCHAasbWZhrd3BFhPIiMgc7gf9te6r01xuPR1O0O-rVtCCFMGvQoA-5FYHfN_zdyA1mAIA&flowName=GlifWebSignIn&flowEntry=ServiceLogin"
           >
             <svg
               className="w-5 h-5"
@@ -43,7 +43,7 @@ export default function Footer() {
           <a
             aria-label="twitter"
             className="ml-3"
-            href="https://twitter.com/saurishhh"
+            href="#"
           >
             <svg
               fill="currentColor"
@@ -59,7 +59,7 @@ export default function Footer() {
           <a
             aria-label="instagram"
             className="ml-3"
-            href="https://instagram.com/saurishhh"
+            href="#"
           >
             <svg
               fill="none"
@@ -94,7 +94,7 @@ export default function Footer() {
           <a
             aria-label="github"
             className="ml-3"
-            href="https://github.com/minor/plutonium/"
+            href="https://github.com/Mazen421/Software-Engineering-Project"
           >
             <svg
               width="30"
