@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  BASE_PATH: 'THE Project Files/final-version/geeks-v-3'
+  BASE_PATH: '${{ github.workspace }}/THE Project Files/final-version/geeks-v-3'
 
 jobs:
   build_and_deploy:
@@ -23,17 +23,17 @@ jobs:
       - name: Install Dependencies
         run: |
           cd ${{ env.BASE_PATH }}
-          yarn install --frozen-lockfile
+          npm install
 
       - name: Build
         run: |
           cd ${{ env.BASE_PATH }}
-          yarn build
+          npm run build
 
       - name: Export
         run: |
           cd ${{ env.BASE_PATH }}
-          yarn export
+          npm run export
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.1
