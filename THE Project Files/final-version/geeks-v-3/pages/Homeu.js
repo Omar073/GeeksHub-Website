@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
 import SidebarU from '../components/SidebarU'
 import Countdown from "../components/countdown";
+import Sidebar from '@/components/Sidebar';
 import Pricing from "../components/Pricing";
 import image from "next/dist/client/legacy/image";
 
 export default class Homeu extends Component {
     render() {
         return (
-            <div class="w-full bg-no-repeat backdrop-filter backdrop-blur-lg bg-fixed bg-blur">
+            <div>
 
 
-                <SidebarU/>
+                <Sidebar/>
 
 
 
