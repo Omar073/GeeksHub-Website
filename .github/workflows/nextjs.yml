@@ -34,23 +34,22 @@ jobs:
         with:
           path: './THE Project Files/final-version/geeks-v-3' #specify the path of the nested folder here
       - name: Detect package manager
-  id: detect-package-manager
-  run: |
-    if [ -f "${{ github.workspace }}/geeks-v-3/yarn.lock" ]; then
-      echo "manager=yarn" >> $GITHUB_OUTPUT
-      echo "command=install" >> $GITHUB_OUTPUT
-      echo "runner=yarn" >> $GITHUB_OUTPUT
-      exit 0
-    elif [ -f "${{ github.workspace }}/geeks-v-3/package.json" ]; then
-      echo "manager=npm" >> $GITHUB_OUTPUT
-      echo "command=ci" >> $GITHUB_OUTPUT
-      echo "runner=npx --no-install" >> $GITHUB_OUTPUT
-      exit 0
-    else
-      echo "Unable to determine package manager"
-      exit 1
-    fi
-
+        id: detect-package-manager
+        run: |
+          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
+            echo "manager=yarn" >> $GITHUB_OUTPUT
+            echo "command=install" >> $GITHUB_OUTPUT
+            echo "runner=yarn" >> $GITHUB_OUTPUT
+            exit 0
+          elif [ -f "${{ github.workspace }}/package.json" ]; then
+            echo "manager=npm" >> $GITHUB_OUTPUT
+            echo "command=ci" >> $GITHUB_OUTPUT
+            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
+            exit 0
+          else
+            echo "Unable to determine package manager"
+            exit 1
+          fi
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
@@ -82,6 +81,8 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.runner }} next export
 
       - name: Upload artifact
+        uses:
+
         uses: actions/upload-pages-artifact@v1
         with:
           path: ./out
