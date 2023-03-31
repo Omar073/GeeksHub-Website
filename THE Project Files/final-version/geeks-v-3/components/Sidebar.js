@@ -2,16 +2,16 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 
- function Sidebar() {
-    const [navbarOpen, setNavbarOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+function Sidebar() {
+   const [navbarOpen, setNavbarOpen] = useState(false);
+   const [mounted, setMounted] = useState(false);
+   const { theme, setTheme } = useTheme();
 
   // When mounted on client, now we can show the UI
-  useEffect(() => setMounted(true), []);
+   useEffect(() => setMounted(true), []);
 
-  return (
-    <div>
+   return (
+      <div>
 
 
 
