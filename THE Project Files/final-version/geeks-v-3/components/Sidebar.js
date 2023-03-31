@@ -16,7 +16,7 @@ function Sidebar() {
 
 
 <aside id="default-sidebar" className="fixed top-0 left-0 z-40 w-64 h-full transition-transform -translate-x-full sm:translate-x-0 justify-items-center " aria-label="Sidebar">
-   <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800 ">
+   <div className="h-full px-3 py-4  bg-gray-50 dark:bg-gray-800 ">
       <ul className="space-y-2 font-medium content-center   mt-5">
          <li>
             <a href="Homeu" className="flex items-center p-4 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
@@ -26,7 +26,7 @@ function Sidebar() {
          </li>
         
          <li>
-            <a href="#" className="flex items-center p-4 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+            <a href="Reservations" className="flex items-center p-4 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
 
                <svg aria-hidden="true" 
                className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" 

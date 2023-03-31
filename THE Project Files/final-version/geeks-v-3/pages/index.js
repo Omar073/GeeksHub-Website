@@ -14,21 +14,10 @@ export default function Home() {
         title="Geeks Hub"
         description="GEEEKS HUB a co-working space "
         canonical="https://plutonium.saurish.com/"
-        openGraph={{
-          url: "https://www.plutonium.saurish.com",
-          title: "Geeks Hub",
-          description: "GEEEKS  a co-working space ",
-         
-          site_name: "Geeks Hub",
-        }}
-        twitter={{
-          handle: "@saurishhh",
-          site: "https://plutonium.saurish.com",
-          cardType: "summary_large_image",
-        }}
+
       />
       <Head>
-       
+      <link rel="icon" href="images/black.png" className="h-5"/>
       </Head>
       <Header />
       <section className="relative">

@@ -26,8 +26,8 @@ export default function Subscribers_admin() {
                   <th>Total Hours</th>
                   <th>Price</th>
                   <th>Report Reservation</th>
+
               </tr>
-              <hr style={{width:"700%"}}/>
 
               </thead>
 
