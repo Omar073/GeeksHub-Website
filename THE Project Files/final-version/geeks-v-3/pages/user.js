@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Sidebar from '../components/Sidebar'
 import Header from "../components/Header";
+import Adminbar from '@/components/Adminbar';
 
 import Footer from "../components/Footer";
 import Head from "next/head";
@@ -10,7 +11,10 @@ import { NextSeo } from "next-seo";
 export default function user() {
     return (
    
-        <><Header />
+        <div>
+      <Adminbar />
+        <div className="p-4 sm:ml-64">
+      <div className="grid grid-cols-1 overflow-x-auto shadow-md sm:rounded-lg"></div>
         
       
 
@@ -25,7 +29,7 @@ export default function user() {
             <input type="text" id="table-search" class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for users"/>
         </div>
     </div>
-    <table class=" w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
+    <table class=" w-full h-screen text-sm text-left text-gray-500 dark:text-gray-400 ">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="p-4">
@@ -33,6 +37,7 @@ export default function user() {
                         <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                         <label for="checkbox-all-search" class="sr-only">checkbox</label>
                     </div>
+                    
                 </th>
                 <th scope="col" class="px-6 py-3">
                    user name
@@ -48,6 +53,9 @@ export default function user() {
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Action
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Status
                 </th>
             </tr>
         </thead>
@@ -71,9 +79,15 @@ export default function user() {
                 <td class="px-6 py-4">
                     $29
                 </td>
+              
                 <td class="px-6 py-4">
                     <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                 </td>
+                <td class="px-6 py-4">
+                    <div class="flex items-center">
+                        <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> Online
+                    </div>
+                    </td>
             </tr>
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="w-4 p-4">
@@ -97,6 +111,11 @@ export default function user() {
                 <td class="px-6 py-4">
                     <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                 </td>
+                <td class="px-6 py-4">
+                    <div class="flex items-center">
+                        <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> Online
+                    </div>
+                    </td>
             </tr>
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="w-4 p-4">
@@ -120,6 +139,12 @@ export default function user() {
                 <td class="px-6 py-4">
                     <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                 </td>
+
+                <td class="px-6 py-4">
+                    <div class="flex items-center">
+                        <div class="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div> Offline 
+                    </div>
+                    </td>
             </tr>
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="w-4 p-4">
@@ -143,6 +168,11 @@ export default function user() {
                 <td class="px-6 py-4">
                     <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                 </td>
+                <td class="px-6 py-4">
+                    <div class="flex items-center">
+                        <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> Online
+                    </div>
+                    </td>
             </tr>
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="w-4 p-4">
@@ -166,6 +196,11 @@ export default function user() {
                 <td class="px-6 py-4">
                     <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                 </td>
+                <td class="px-6 py-4">
+                    <div class="flex items-center">
+                        <div class="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div> Offline
+                    </div>
+                    </td>
             </tr>
             <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="w-4 p-4">
@@ -189,6 +224,11 @@ export default function user() {
                 <td class="px-6 py-4">
                     <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                 </td>
+                <td class="px-6 py-4">
+                    <div class="flex items-center">
+                        <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> Online
+                    </div>
+                    </td>
             </tr>
         </tbody>
     </table>
@@ -198,10 +238,10 @@ export default function user() {
   <div class="my-20 ..."></div>
       
 
-<Footer />
 
 
-        </>
+    </div>
+    </div>
         
 
     )
