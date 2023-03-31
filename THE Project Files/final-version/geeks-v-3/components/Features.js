@@ -4,11 +4,11 @@ export default function Features() {
       <div className="max-w-xl px-4 py-12 mx-auto sm:px-6 lg:max-w-6xl lg:px-8">
         <h1 className="mb-8 text-2xl font-bold tracking-normal text-center text-gray-800 md:leading-tight md:tracking-normal dark:text-gray-200 md:text-4xl">
           Supporting the{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r dark:bg-gradient-to-r text-blue-500 dark:from-blue-400 dark:via-fuchsia-400 dark:to-indigo-400">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r dark:bg-gradient-to-r  from-blue-400 via-fuchsia-400 to-indigo-400">
             finest
           </span>{" "}
           and{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r dark:bg-gradient-to-r text-blue-500 dark:from-indigo-400 dark:via-fuchsia-400 dark:to-blue-400">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r dark:bg-gradient-to-r   from-indigo-400 via-fuchsia-400  to-blue-400">
             richest
           </span>{" "}
           features.
