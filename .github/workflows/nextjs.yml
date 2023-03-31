@@ -32,24 +32,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          path: './THE Project Files/final-version/geeks-v-3' #specify the path of the nested folder here
+          path: './THE Project Files/final-version/geeks-v-3'
       - name: Detect package manager
         id: detect-package-manager
         run: |
           if [ -f "${{ github.workspace }}/THE Project Files/final-version/geeks-v-3/yarn.lock" ]; then
-            echo "manager=yarn" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
-            echo "runner=yarn" >> $GITHUB_OUTPUT
+            echo "::set-output name=manager::yarn"
+            echo "::set-output name=command::install"
+            echo "::set-output name=runner::yarn"
             exit 0
-          elif [ -f "${{ github.workspace }}/THE Project Files/final-version/geeks-v-3/package.json" ]; then
-            echo "manager=npm" >> $GITHUB_OUTPUT
-            echo "command=ci" >> $GITHUB_OUTPUT
-            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
+          elif [ -f "${{ github.workspace }}/THE Project Files/final-version/geeks-v-3/package-lock.json" ]; then
+            echo "::set-output name=manager::npm"
+            echo "::set-output name=command::ci"
+            echo "::set-output name=runner::npx --no-install"
             exit 0
           else
             echo "Unable to determine package manager"
             exit 1
           fi
+        shell: bash
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
