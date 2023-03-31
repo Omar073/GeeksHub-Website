@@ -10,18 +10,28 @@ export default function Header() {
 
   // When mounted on client, now we can show the UI
   useEffect(() => setMounted(true), []);
-
+var x ="/images/black.png"
   if (!mounted) return null;
+  if (theme === "dark"){
+    var x ="/images/white.png"
+
+
+  } else{
+    var x ="/images/black.png"
+
+  }
 
   return (
     <header className="w-full sticky-nav">
       <div className="flex flex-col flex-wrap max-w-5xl p-2.5 mx-auto md:flex-row">
         <div className="flex flex-row items-center justify-between p-2 md:p-1">
-          <Link href="/" className="mb-4 text-2xl font-medium text-black transition duration-300 hover:text-gray-300 dark:text-gray-300 dark:hover:text-white md:mb-0">
-           
+        <img src={x} width={40} className=" inline pt-1 " ></img>
+          <Link href="/" className="mb-4 text-2xl font-medium  p-4 inline-block text-black transition duration-300 hover:text-gray-300 dark:text-gray-300 dark:hover:text-white md:mb-0">
+          
               Geeks Hub
            
           </Link>
+        
           <button
             className="px-3 py-1 pb-4 ml-auto text-black outline-none dark:text-gray-300 md:hidden"
             type="button"

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Sidebar from '../components/Sidebar'
 import Header from "../components/Header";
+import Adminbar from '@/components/Adminbar';
 
 import Footer from "../components/Footer";
 import Head from "next/head";
@@ -10,7 +11,10 @@ import { NextSeo } from "next-seo";
 export default function user() {
     return (
    
-        <><Header />
+        <div>
+      <Adminbar />
+        <div className="p-4 sm:ml-64">
+      <div className="grid grid-cols-1 overflow-x-auto shadow-md sm:rounded-lg"></div>
         
       
 
@@ -25,7 +29,7 @@ export default function user() {
             <input type="text" id="table-search" class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for users"/>
         </div>
     </div>
-    <table class=" w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
+    <table class=" w-full h-screen text-sm text-left text-gray-500 dark:text-gray-400 ">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="p-4">
@@ -198,10 +202,10 @@ export default function user() {
   <div class="my-20 ..."></div>
       
 
-<Footer />
 
 
-        </>
+    </div>
+    </div>
         
 
     )
