@@ -16,7 +16,7 @@ export default class Subscription extends Component {
                     <Pricing />
                 </div>
                 <div
-                    className="fixed top-0 left-0 w-screen h-screen bg-cover bg-no-repeat"
+                    className="fixed top-0 left-0 w-screen h-screen bg-cover bg-no-repeat blur-sm"
                     style={{
                         backgroundImage: `url(images/placeholder-2.webp)`,
                         backgroundSize: 'cover',
