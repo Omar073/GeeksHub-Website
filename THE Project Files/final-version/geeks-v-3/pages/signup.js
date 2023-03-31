@@ -6,12 +6,12 @@ export default function signup() {
     <div>
       <NextSeo
         title="Geeks Hub"
-        description="GEEEKS HUB a co-working space "
+        description="GEEKS HUB a co-working space "
         canonical="https://plutonium.saurish.com/"
         openGraph={{
           url: "https://www.plutonium.saurish.com",
           title: "Geeks Hub",
-          description: "GEEEKS  a co-working space ",
+          description: "GEEKS  a co-working space ",
          
           site_name: "Geeks Hub",
         }}
