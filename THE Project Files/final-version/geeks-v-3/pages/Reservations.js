@@ -1,6 +1,7 @@
 import React from 'react'
 import { NextSeo } from "next-seo";
 import Adminbar from '@/components/Adminbar';
+import Sidebar from '@/components/Sidebar';
 
 export default function Subscribers_admin() {
   return (
