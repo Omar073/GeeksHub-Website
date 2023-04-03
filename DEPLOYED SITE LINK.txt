@@ -1,0 +1,3 @@
+Since we are using react we can't deploy our site using Jekyll so we opted in to using Vercil instead
+
+Visit this link to see the site in action
