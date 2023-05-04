@@ -6,6 +6,7 @@ import { auth , db } from './config/firebase'
 import { AuthContext } from './context/Auth';
 import { useContext } from 'react';
 import {useNavigate} from 'react-router-dom'
+import { Gprovider } from './config/firebase';
 
 export default function NewUser() {
   const users= collection(db, 'users')
@@ -58,6 +59,41 @@ export default function NewUser() {
           console.log(error)
       }
    
+}
+
+const handleSignInWithGoogle = async () => {
+  try{
+      await signInWithPopup(auth, Gprovider)
+      .then (async (userCredential) => {
+          const user = userCredential.user;
+          console.log(user)
+          await setDoc(doc(users, user.uid), {
+            FirstName: user.displayName,
+            LastName: user.displayName,
+            Email: user.email,
+            PhoneNumber: '',
+            Faculty: '',
+            Password: '',
+            isAdmin : false,
+            isEmployee : false,
+            isActive : false,
+            isSub : false,
+            RemaningHours : 0,
+            Reservations : []
+
+      })
+      })
+
+      setUser(auth.currentUser);
+      console.log(auth.currentUser);
+      navigate('/home');
+
+      
+
+  }
+  catch(error){
+      console.log(error)
+  }
 }
 
 
@@ -136,6 +172,10 @@ export default function NewUser() {
                   <button type="submit" onClick={handleSubmit} className="w-full text-white bg-blue-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                   Create an account 
                     </button>
+                    <button type="button" onClick={handleSignInWithGoogle} className="text-white w-full  justify-center  bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2">
+<svg className="mr-2 -ml-1 w-4 h-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path></svg>
+Sign Up with Google
+</button>
                   <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                       Already have an account? <a href="signin" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Login here</a>
                   </p>

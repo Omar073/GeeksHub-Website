@@ -7,11 +7,12 @@ import { auth } from '../config/firebase';
 import { AuthContext } from '../context/Auth';
 
 
+
 function Sidebar() {
    const [navbarOpen, setNavbarOpen] = useState(false);
    const [mounted, setMounted] = useState(false);
    const { user, setUser } = useContext(AuthContext);
-     const navigate = useNavigate()
+   const navigate = useNavigate()
 
 
   // When mounted on client, now we can show the UI
@@ -20,9 +21,12 @@ function Sidebar() {
 
    const handleLogout = async () => {
       try {
-         await signOut(auth);
+         await
+          signOut(auth);
          navigate('/');
          setUser(null);
+         
+        
       } catch (error) {
          console.log(error);
       }

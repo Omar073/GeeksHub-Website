@@ -26,6 +26,9 @@ import { UserContext } from  '../context/UserContext';
 // data for the authourized user   
    const [data , setData] = useState({})
 
+// user context for user data
+    const {authUserData , setauthUserData} = useContext(UserContext);
+
 
 
 // navigate to other pages
@@ -33,7 +36,6 @@ import { UserContext } from  '../context/UserContext';
 
 
 // get the data of the authourized user
-const {authUserData } = useContext(UserContext);
 
 
   // Whrn user click on logout button and signout from the app  
@@ -42,10 +44,19 @@ const {authUserData } = useContext(UserContext);
       await signOut(auth);
       navigate('/');
       setUser(null);
+      
+
+      console.log('user signed out');
    } catch (error) {
       console.log(error);
    }
 };
+
+useEffect(() => {
+    console.log('i dont know what the fuck is this')
+    console.log(authUserData);
+}
+, [authUserData])
 
   return (
     <div className='flex flex-cols-2 gap-10'>

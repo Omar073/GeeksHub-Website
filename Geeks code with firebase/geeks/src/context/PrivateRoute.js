@@ -13,8 +13,8 @@ import { UserContext } from './UserContext';
 
 const PrivateRoute = ({ element: Element, ...rest }) => {
   const { user , setUser} = useContext(AuthContext);
-  const {authUserData } = useContext(UserContext);
-
+  const {authUserData , setauthUserData} = useContext(UserContext);
+  
 
 
 

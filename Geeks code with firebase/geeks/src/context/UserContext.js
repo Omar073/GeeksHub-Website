@@ -1,22 +1,11 @@
 import { auth } from "../config/firebase"
 import React, { useEffect , useState} from "react"
 import { createContext } from "react"
-import { Link, Outlet } from 'react-router-dom';
-import { signOut } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../context/Auth';
-import { GiHamburgerMenu } from "react-icons/gi";
-import { Disclosure } from "@headlessui/react";
-import { CgProfile } from "react-icons/cg";
-import { FaRegComments } from "react-icons/fa";
-import { MdOutlineAnalytics } from "react-icons/md";
-import { BiMessageSquareDots } from "react-icons/bi";
-import { MdOutlineIntegrationInstructions } from "react-icons/md";
-import { MdOutlineSettings } from "react-icons/md";
-import { MdOutlineLogout } from "react-icons/md";
-import {  db } from '../config/firebase';
 import { getDoc  } from 'firebase/firestore'
 import { doc } from "firebase/firestore";
+import { db } from "../config/firebase";
+import { AuthContext } from "./Auth";
+
 
 
 export const  UserContext = createContext()
@@ -30,11 +19,18 @@ export const UserProvider = ({children}) => {
 
       const [loading, setloading] = useState(true)
 
+      const { user, setUser } = React.useContext(AuthContext);
+
+
    
    
 
+
     useEffect (() => {
+       
+        
         const getUser = async () => {
+
             const userDocRef = doc(db, "users", auth.currentUser.uid);
             const userDocSnap = await getDoc(userDocRef);
             if (userDocSnap.exists()) {
@@ -45,14 +41,30 @@ export const UserProvider = ({children}) => {
             } else {
               console.log('User document does not exist');
             }
-          }
+          
+        }
 
-          getUser()
+if(user)    {
+
+        getUser()
+}
+else {
+        setloading(false)
+        setauthUserData({})
+
+
+    } 
+
+    console.log("authUserData")
+
+    console.log(authUserData)
+
+       
       
         
         
     } 
-    , [])
+    , [user])
 
     
 
@@ -68,7 +80,7 @@ export const UserProvider = ({children}) => {
   </div>
   }
     return (
-        <UserContext.Provider value={{authUserData}}>
+        <UserContext.Provider value={{authUserData,setauthUserData}}>
             {children}
         </UserContext.Provider>
 
