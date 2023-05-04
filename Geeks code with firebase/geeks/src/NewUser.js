@@ -7,6 +7,7 @@ import { AuthContext } from './context/Auth';
 import { useContext } from 'react';
 import {useNavigate} from 'react-router-dom'
 import { Gprovider } from './config/firebase';
+import { getDoc } from 'firebase/firestore'
 
 export default function NewUser() {
   const users= collection(db, 'users')
@@ -86,7 +87,6 @@ const handleSignInWithGoogle = async () => {
 
       setUser(auth.currentUser);
       console.log(auth.currentUser);
-      navigate('/home');
 
       
 
@@ -94,6 +94,25 @@ const handleSignInWithGoogle = async () => {
   catch(error){
       console.log(error)
   }
+
+
+  const userDocRef = doc(db, "users", auth.currentUser.uid);
+
+        const userDocSnap = await getDoc(userDocRef);
+          
+        if (userDocSnap.exists()) {
+          console.log('User document exists');
+          if (userDocSnap.data().isAdmin) {
+            navigate('/admin');
+          }
+          else {
+            navigate('/home');
+          }
+          // do something with the user document
+        } else {
+          console.log('User document does not exist');
+        }
+
 }
 
 

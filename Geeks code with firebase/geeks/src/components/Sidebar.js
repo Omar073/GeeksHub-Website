@@ -1,22 +1,41 @@
 import React from 'react'
-import { useState, useEffect , useContext} from "react";
-import {  Outlet, useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { useState, useEffect ,useContext } from "react";
+import { Link, Outlet } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '../config/firebase';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/Auth';
-
+import { GiHamburgerMenu } from "react-icons/gi";
+import { Disclosure } from "@headlessui/react";
+import { CgProfile } from "react-icons/cg";
+import { FaRegComments } from "react-icons/fa";
+import { MdOutlineAnalytics } from "react-icons/md";
+import { BiMessageSquareDots } from "react-icons/bi";
+import { MdOutlineIntegrationInstructions } from "react-icons/md";
+import { MdOutlineSettings } from "react-icons/md";
+import { MdOutlineLogout } from "react-icons/md";
+import { UserContext } from  '../context/UserContext'
 
 
 function Sidebar() {
-   const [navbarOpen, setNavbarOpen] = useState(false);
-   const [mounted, setMounted] = useState(false);
+   // Auth context for user state
    const { user, setUser } = useContext(AuthContext);
+
+// data for the authourized user   
+   const [data , setData] = useState({})
+
+// user context for user data
+    const {authUserData , setauthUserData} = useContext(UserContext);
+
+
+
+// navigate to other pages
    const navigate = useNavigate()
 
 
-  // When mounted on client, now we can show the UI
-   useEffect(() => setMounted(true), []);
+
+
+  
 
 
    const handleLogout = async () => {
@@ -33,89 +52,92 @@ function Sidebar() {
    };
 
    return (
+      <div className='flex flex-cols-2 gap-10'>
+
+
       <div>
-      <div>
-
-         <nav>
-
-
-
-<aside id="default-sidebar" className="fixed top-0 left-0 z-40 w-64 h-full transition-transform -translate-x-full sm:translate-x-0 justify-items-center " aria-label="Sidebar">
-   <div className="h-full px-3 py-4  bg-gray-50 dark:bg-gray-800 ">
-      <ul className="space-y-2 font-medium content-center   mt-5">
-         <li>
-            <Link to='/home' className="flex items-center p-4 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-               <svg aria-hidden="true" className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path></svg>
-               <span className="ml-3">Dashboard</span>
-            </Link>
-         </li>
-        
-         <li>
-            <Link to='/home/reservations' className="flex items-center p-4 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-
-               <svg aria-hidden="true" 
-               className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" 
-               fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path 
-               fill-rule="evenodd" d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z" 
-               clip-rule="evenodd"></path></svg>
-               <span className="flex-1 ml-3 whitespace-nowrap">Reservation History</span>
-            </Link>
-         </li>
-         <li>
-            <Link to='/home/subscribtions' className="flex items-center p-4 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-               <svg aria-hidden="true" className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
-               <span className="flex-1 ml-3 whitespace-nowrap">Subscribtions</span>
-            </Link>
-         </li>
-         <div>
-         <hr className=' mt-10'/>
-
-         </div>
-
-         <li  className="pt-6">
-            <Link to='/home/settings' className="flex items-center p-4 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-               <svg aria-hidden="true" className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
-               <span className="flex-1 ml-3 whitespace-nowrap">Account Setting</span>
-            </Link>
-         </li>
-        
-         <li>
-            <button onClick={handleLogout} className="flex items-center p-4 w-full text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-            
-               <svg aria-hidden="true" className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"></path></svg>
-               <span className="flex-1 ml-3 whitespace-nowrap ">Sign out</span>
-            </button>
-         </li>
-        <li className="pt-6">
-         <button
-            aria-label="Toggle Dark Mode"
-            type="button"
-            className="w-full h-10  text-center justify-center  p-3 ml-5 mr-0 bg-gray-200 rounded md:ml-0 md:mr-5 dark:bg-gray-700"
-            
-          >
-            {mounted && (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                stroke="currentColor"
-                className="h-4   ml-24 text-gray-800 dark:text-gray-200 "
-              >
-               
-              </svg>
-            )}
-          </button>
-          </li>
-      </ul>
-   </div>
-</aside>
-</nav>
-
-
-
+          <Disclosure as="nav">
+              <Disclosure.Button className="absolute top-2 left-2  items-center peer justify-center rounded-md  text-gray-800 hover:bg-gray-900 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white group">
+                <GiHamburgerMenu
+                  className="block md:hidden h-6 w-6"
+                  aria-hidden="true"
+                />
+              </Disclosure.Button>
+              <div className="p-6 w-1/2   shadow-lg h-screen  bg-gray-100 z-20 fixed top-0 -left-96 lg:left-0  lg:w-72 peer-focus:left-0 peer:transition ease-out delay-150 duration-200">
+                <div className="flex flex-col justify-start item-center">
+                  <h1 className="text-base text-center cursor-pointer font-bold text-blue-900 border-b border-gray-100 pb-4 w-full">
+                    Hello {authUserData.FirstName}
+                  </h1>
+                  <div className=" my-4 border-b border-gray-100 pb-4">
+                    
+                    <div className="flex  mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
+                    <Link to='' className='flex m-1 gap-4' >
+                      <CgProfile className="text-2xl text-gray-600 group-hover:text-white " />
+                      
+                      <h3 className="text-base text-gray-800 group-hover:text-white font-semibold ">
+                        Dashboard
+                      </h3>
+                      </Link>
+                    </div>
+                    <div className="flex  mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
+                    <Link to='subscibers' className='flex m-1 gap-4' >
+                      <FaRegComments className="text-2xl text-gray-600 group-hover:text-white " />
+                      <h3 className="text-base text-gray-800 group-hover:text-white font-semibold ">
+                        Book a room
+                      </h3>
+                      </Link>
+                    </div>
+                    <div className="flex  mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
+                      <MdOutlineAnalytics className="text-2xl text-gray-600 group-hover:text-white " />
+                      <h3 className="text-base text-gray-800 group-hover:text-white font-semibold ">
+                        Reservation History
+                      </h3>
+                    </div>
+                    <div className="flex  mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
+                      <BiMessageSquareDots className="text-2xl text-gray-600 group-hover:text-white " />
+                      <h3 className="text-base text-gray-800 group-hover:text-white font-semibold ">
+                        My Subscribtion
+                      </h3>
+                    </div>
+                    
+                  </div>
+                  {/* setting  */}
+                  <div className=" my-4 border-b border-gray-100 pb-4">
+                    <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
+                    <Link to='adminsettings' className='flex m-1 gap-4' >
+                      <MdOutlineSettings className="text-2xl text-gray-600 group-hover:text-white " />
+                     
+                      <h3 className="text-base text-gray-800 group-hover:text-white font-semibold ">
+                        Settings
+                      </h3>
+                      </Link>
+                    </div>
+                   
+                  </div>
+                  {/* logout */}
+                  <div className=" my-4">
+                   
+                    <div className="flex mb-2 justify-start items-center gap-4 pl-5 border border-gray-200  hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
+                    <button onClick={handleLogout} className='flex m-1 gap-4' >
+                      <MdOutlineLogout className="text-2xl text-gray-600 group-hover:text-white " />
+                     
+                      <h3 className="text-base text-gray-800 group-hover:text-white font-semibold ">
+                        Logout
+                      </h3>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Disclosure>
       </div>
+      <div className='w-full p-6'>
+      
       <Outlet />
       </div>
+      
+      
+            </div>
   )
 }
 export default Sidebar;
