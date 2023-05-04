@@ -15,6 +15,7 @@ import AdminBar from './components/Adminbar';
 import ActiveUsers from './user';
 import SubscribersAdmin from './SubscribersAdmin';
 import AdminSettings from './AdminSettings';
+import AdminPrivateRoute from './context/AdminPrivateRoute';
 
 function App() {
   return (
@@ -33,11 +34,11 @@ function App() {
           <Route path="settings" element={<Settings />} />
         </PrivateRoute>} />
 
-        <Route path="/admin/*" element={<PrivateRoute element={AdminBar}>
+        <Route path="/admin/*" element={<AdminPrivateRoute element={AdminBar}>
           <Route path="/" element={<ActiveUsers />} />
           <Route path="subscibers" element={<SubscribersAdmin />} />
           <Route path="adminsettings" element={<AdminSettings />} />
-        </PrivateRoute>} />
+        </AdminPrivateRoute>} />
       </Routes>
     </BrowserRouter>
   );

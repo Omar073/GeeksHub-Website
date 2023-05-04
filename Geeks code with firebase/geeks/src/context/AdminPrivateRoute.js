@@ -11,11 +11,14 @@ import { UserContext } from './UserContext';
 
 
 
-const PrivateRoute = ({ element: Element, ...rest }) => {
+const AdminPrivateRoute = ({ element: Element, ...rest }) => {
   const { user , setUser} = useContext(AuthContext);
   const {authUserData } = useContext(UserContext);
 
 
+
+  
+  
 
 
   return (
@@ -23,7 +26,7 @@ const PrivateRoute = ({ element: Element, ...rest }) => {
       <Route
         {...rest}
         element={
-           user && !authUserData.isAdmin ? (
+           user && authUserData.isAdmin  ? (
             <Element {...rest} />
           ) : (
             <Navigate to="/login" replace />
@@ -34,4 +37,4 @@ const PrivateRoute = ({ element: Element, ...rest }) => {
   );
 };
 
-export default PrivateRoute;
+export default AdminPrivateRoute;

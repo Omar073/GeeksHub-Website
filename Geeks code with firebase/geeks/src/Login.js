@@ -2,9 +2,8 @@ import React, { useState , useContext } from 'react';
 import { auth , db } from './config/firebase';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from './context/Auth';
-import {setUser} from './context/Auth';
 import { collection, doc, setDoc } from "firebase/firestore";
-import { createUserWithEmailAndPassword , signInWithPopup, signOut , signInWithEmailAndPassword} from 'firebase/auth'
+import { signInWithEmailAndPassword} from 'firebase/auth'
 import { getDoc  ,getDocs, addDoc } from 'firebase/firestore'
 
 
@@ -16,6 +15,7 @@ import { getDoc  ,getDocs, addDoc } from 'firebase/firestore'
 export default function Login() {
     const navigate = useNavigate();
     const users= collection(db, 'users')
+
 
     const { user, setUser } = useContext(AuthContext);
 
