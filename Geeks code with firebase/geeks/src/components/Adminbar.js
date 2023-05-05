@@ -27,7 +27,7 @@ import { UserContext } from  '../context/UserContext';
    const [data , setData] = useState({})
 
 // user context for user data
-    const {authUserData , setauthUserData} = useContext(UserContext);
+const {authUserData , setauthUserData , update , setUpdate} = useContext(UserContext);
 
 
 
@@ -44,6 +44,7 @@ import { UserContext } from  '../context/UserContext';
       await signOut(auth);
       navigate('/');
       setUser(null);
+      setUpdate(update + 1)
       
 
       console.log('user signed out');

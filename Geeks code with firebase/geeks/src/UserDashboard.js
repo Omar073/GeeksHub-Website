@@ -1,7 +1,46 @@
 import React, { Component } from 'react'
 import Sidebar from "./components/Sidebar";
 import Countdown from "./components/countdown";
+import { UserContext } from './context/UserContext';
+import { useContext } from 'react';
+import { db } from './config/firebase';
+import { collection } from "firebase/firestore";
+import { updateDoc } from 'firebase/firestore';
+import { doc } from 'firebase/firestore';
 function UserDashboard() {
+    const { authUserData, setauthUserData ,update, setUpdate } = useContext(UserContext);
+
+   const  updateActiveStatus  = async () => {
+     await updateDoc(doc(db, "users", authUserData.id), {
+         isActive: true,
+
+   });
+
+    await updateDoc(doc(db, "users", authUserData.id), {
+    Reservations:[
+        ...authUserData.Reservations,
+        {
+            id: authUserData.Reservations.length + 1,
+            startTimeHour: new Date().getHours() ,
+            startTimeMin: new Date().getMinutes() ,
+            date : new Date().toLocaleDateString(),
+        }
+    ]
+
+
+})
+  
+
+    setUpdate(update+1)
+ 
+}
+
+const print = () => console.log(authUserData);
+
+
+
+
+
   return (
     <div>
 
@@ -15,28 +54,29 @@ function UserDashboard() {
                     <div className="p-4  flex flex-col space-y-10 ">
 
 
-                        <div className="p-4 w-1/2 rounded-lg 	">
+                        
+{
+    authUserData.isActive? <div className="p-4 border-2 border-transparent w-3/2 rounded-lg drop-shadow-lg	dark:drop-shadow-none text-center	">
 
-                            <span
-                                className="font-bold text-transparent drop-shadow-xl shadow-white-500 text-6xl bg-clip-text bg-gradient-to-r from-purple-400 via-white-400 to-pink-600"
-                            >
-                               Dashboard
-                            </span>
+    <span className="text-3xl font-helvetica">Your Time Has Started</span>
+    <button onClick={print} className=" bg-emerald-800 text-white font-bold py-2 px-4 rounded-full">
+                                Refresh
 
+                            </button>
+    </div>:<div className="p-4 border-2 drop-shadow-lg	dark:drop-shadow-none w-3/2 rounded-lg  text-center	">
 
+                            <span className="text-4xl font-bold font-helvetica">Start Your time </span>
+                            <button onClick={updateActiveStatus} className=" bg-emerald-800 text-white font-bold py-2 px-4 rounded-full">
+                                Start
+                            </button>
 
+                            <button onClick={print} className=" bg-emerald-800 text-white font-bold py-2 px-4 rounded-full">
+                                Refresh
+
+                            </button>
 
                         </div>
-                        <hr style={{width:"50%"}}/>
-
-
-
-                        <div className="p-4 border-2 drop-shadow-lg	dark:drop-shadow-none w-3/2 rounded-lg  text-center	">
-
-                            <span className="text-4xl font-bold font-helvetica">Time remaining:</span>
-                            <Countdown/>
-
-                        </div>
+}
 
 
 

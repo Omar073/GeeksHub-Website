@@ -25,7 +25,7 @@ function Sidebar() {
    const [data , setData] = useState({})
 
 // user context for user data
-    const {authUserData , setauthUserData} = useContext(UserContext);
+    const {authUserData , setauthUserData , update , setUpdate} = useContext(UserContext);
 
 
 
@@ -44,6 +44,7 @@ function Sidebar() {
           signOut(auth);
          navigate('/');
          setUser(null);
+         setUpdate(update + 1)
          
         
       } catch (error) {
@@ -75,7 +76,7 @@ function Sidebar() {
                       <CgProfile className="text-2xl text-gray-600 group-hover:text-white " />
                       
                       <h3 className="text-base text-gray-800 group-hover:text-white font-semibold ">
-                        Dashboard
+                        Home
                       </h3>
                       </Link>
                     </div>

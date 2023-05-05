@@ -12,7 +12,7 @@ import Settings from './Settings';
 import Sidebar from './components/Sidebar';
 import PrivateRoute from './context/PrivateRoute';
 import AdminBar from './components/Adminbar';
-import ActiveUsers from './user';
+import ActiveUsers from './ActiveUsers';
 import SubscribersAdmin from './SubscribersAdmin';
 import AdminSettings from './AdminSettings';
 import AdminPrivateRoute from './context/AdminPrivateRoute';
