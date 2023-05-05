@@ -64,10 +64,6 @@ function LandingPage() {
       </p>
     </div>
   </div>
-  {/* <div
-    style={{ backgroundImage: "url(/images/blur.png)" }}
-    className="absolute inset-0 w-full h-full bg-bottom bg-no-repeat bg-cover -z-1"
-  /> */}
 </section>
 <Features />
 <Pricing />
