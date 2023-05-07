@@ -18,7 +18,7 @@ import { Gprovider } from './config/firebase';
 export default function Login() {
     const navigate = useNavigate();
     const users= collection(db, 'users')
-    const {authUserData , setauthUserData} = useContext(UserContext);
+    const {authUserData , setauthUserData , update , setUpdate} = useContext(UserContext);
 
 
     const { user, setUser } = useContext(AuthContext);
@@ -52,12 +52,18 @@ export default function Login() {
         const userDocRef = doc(db, "users", auth.currentUser.uid);
 
         const userDocSnap = await getDoc(userDocRef);
+
+        setUpdate(update+1);
           
         if (userDocSnap.exists()) {
           console.log('User document exists');
           if (userDocSnap.data().isAdmin) {
             navigate('/admin');
           }
+           else if (userDocSnap.data().isEmployee) {
+            navigate('/employee');
+          }
+
           else {
             navigate('/home');
           }
@@ -96,11 +102,17 @@ export default function Login() {
 
         const userDocSnap = await getDoc(userDocRef);
           
+        setUpdate(update+1);
+          
         if (userDocSnap.exists()) {
           console.log('User document exists');
           if (userDocSnap.data().isAdmin) {
             navigate('/admin');
           }
+           else if (userDocSnap.data().isEmployee) {
+            navigate('/employee');
+          }
+
           else {
             navigate('/home');
           }

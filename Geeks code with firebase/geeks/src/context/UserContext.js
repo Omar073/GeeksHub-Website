@@ -18,6 +18,8 @@ export const UserProvider = ({children}) => {
       const [authUserData , setauthUserData ] = useState({})
 
       const [loading, setloading] = useState(true)
+      const [update, setUpdate] = useState(5)
+
 
       const { user, setUser } = React.useContext(AuthContext);
 
@@ -64,7 +66,7 @@ else {
         
         
     } 
-    , [user])
+    , [user, update])
 
     
 
@@ -80,7 +82,7 @@ else {
   </div>
   }
     return (
-        <UserContext.Provider value={{authUserData,setauthUserData}}>
+        <UserContext.Provider value={{authUserData,setauthUserData,update,setUpdate}}>
             {children}
         </UserContext.Provider>
 

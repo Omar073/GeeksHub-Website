@@ -26,7 +26,7 @@ const AdminPrivateRoute = ({ element: Element, ...rest }) => {
       <Route
         {...rest}
         element={
-           user && authUserData.isAdmin  ? (
+           user && authUserData.isAdmin && !authUserData.isEmployee ? (
             <Element {...rest} />
           ) : (
             <Navigate to="/login" replace />

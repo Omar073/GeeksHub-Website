@@ -46,7 +46,9 @@ export default function NewUser() {
             isActive : false,
             isSub : false,
             RemaningHours : 0,
-            Reservations : []
+            Reservations : 
+            []
+            ,id : user.uid
 
       })
       })
@@ -80,7 +82,8 @@ const handleSignInWithGoogle = async () => {
             isActive : false,
             isSub : false,
             RemaningHours : 0,
-            Reservations : []
+            Reservations : [],
+            id : user.uid
 
       })
       })
