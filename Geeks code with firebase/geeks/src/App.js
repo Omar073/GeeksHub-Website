@@ -16,6 +16,10 @@ import ActiveUsers from './ActiveUsers';
 import SubscribersAdmin from './SubscribersAdmin';
 import AdminSettings from './AdminSettings';
 import AdminPrivateRoute from './context/AdminPrivateRoute';
+import EmployeeBar from './components/EmployeeBar';
+import EmplyeePrivateRoute from './context/EmployeePrivateRoute';
+import MyShiftsEmployee from './MyShiftsEmployee';
+import EmployeesAdmin from './EmployeesAdmin';
 
 function App() {
   return (
@@ -38,7 +42,18 @@ function App() {
           <Route path="/" element={<ActiveUsers />} />
           <Route path="subscibers" element={<SubscribersAdmin />} />
           <Route path="adminsettings" element={<AdminSettings />} />
+          <Route path="employees" element={<EmployeesAdmin />} />
+
         </AdminPrivateRoute>} />
+
+        <Route path="/employee/*" element={<EmplyeePrivateRoute element={EmployeeBar}>
+          <Route path="/" element={<ActiveUsers />} />
+          <Route path="subscibers" element={<SubscribersAdmin />} />
+          <Route path ="myshifts" element={<MyShiftsEmployee/>}/>
+          
+        </EmplyeePrivateRoute>} />
+
+        
       </Routes>
     </BrowserRouter>
   );

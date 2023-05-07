@@ -24,6 +24,8 @@ function UserDashboard() {
             startTimeHour: new Date().getHours() ,
             startTimeMin: new Date().getMinutes() ,
             date : new Date().toLocaleDateString(),
+            isReported: false,
+            employeeEmail: '',
         }
     ]
 

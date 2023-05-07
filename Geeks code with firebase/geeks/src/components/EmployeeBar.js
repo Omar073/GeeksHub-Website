@@ -17,7 +17,7 @@ import { MdOutlineLogout } from "react-icons/md";
 import { UserContext } from  '../context/UserContext'
 
 
-function AdminBar() {
+function Sidebar() {
    // Auth context for user state
    const { user, setUser } = useContext(AuthContext);
 
@@ -89,18 +89,18 @@ function AdminBar() {
                       </Link>
                     </div>
                     <div className="flex  mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                    <Link to='reservations' className='flex m-1 gap-4' >
+                    <Link to='' className='flex m-1 gap-4' >
                       <MdOutlineAnalytics className="text-2xl text-gray-600 group-hover:text-white " />
                       <h3 className="text-base text-gray-800 group-hover:text-white font-semibold ">
-                        Analytics
+                        Rooms
                       </h3>
                       </Link>
                     </div>
                     <div className="flex  mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                    <Link to='employees' className='flex m-1 gap-4' >
+                    <Link to='myshifts' className='flex m-1 gap-4' >
                       <BiMessageSquareDots className="text-2xl text-gray-600 group-hover:text-white " />
                       <h3 className="text-base text-gray-800 group-hover:text-white font-semibold ">
-                        Employess
+                        Shifts
                       </h3>
                       </Link>
                     </div>
@@ -145,4 +145,4 @@ function AdminBar() {
             </div>
   )
 }
-export default AdminBar;
+export default Sidebar;
