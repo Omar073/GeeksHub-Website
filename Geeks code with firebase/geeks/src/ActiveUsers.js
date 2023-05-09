@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { db } from "./config/firebase";
 
-import { arrayUnion, collection } from "firebase/firestore";
+import { addDoc, arrayUnion, collection } from "firebase/firestore";
 import { getDocs } from "firebase/firestore";
 import { doc, updateDoc } from "firebase/firestore";
 import { UserContext } from "./context/UserContext";
 import { useContext } from "react";
 import { getDoc } from "firebase/firestore";
+import { setDoc } from "firebase/firestore";
 
 function ActiveUsers() {
   //this is the user collection in firestore
   const users = collection(db, "users");
+  const cash= collection(db, 'cash')
+
 
   //this is the fetch data from firestore for all the users that have is active bollen true
   const [data, setData] = useState([]);
@@ -51,6 +54,7 @@ function ActiveUsers() {
       setData(filteredData);
     };
     getUsers();
+    console.log('daaaaaaaaaaaaaaaaaaate'+new Date().getDate());
     setUpdate(update + 1);
   }, []);
 
@@ -71,13 +75,13 @@ function ActiveUsers() {
         endTimeHour: new Date().getHours(),
         endTimeMinute: new Date().getMinutes(),
       } 
-    
-    
-      time=trial.Reservations[trial.Reservations.length - 1].endTimeHour - trial.Reservations[trial.Reservations.length - 1].startTimeHour+(trial.Reservations[trial.Reservations.length - 1].endTimeMinute - trial.Reservations[trial.Reservations.length - 1].startTimeMin)/60
-     
 
-      console.log("tiiiiiiiiiiiiiiiiime")
-      console.log(time)
+   
+
+    
+    
+    time=trial.Reservations[trial.Reservations.length - 1].endTimeHour - trial.Reservations[trial.Reservations.length - 1].startTimeHour+(trial.Reservations[trial.Reservations.length - 1].endTimeMinute - trial.Reservations[trial.Reservations.length - 1].startTimeMin)/60
+     
 
 
       if (trial.isSub) {
@@ -101,7 +105,6 @@ function ActiveUsers() {
        price = time * 10;
 
       }
-
       console.log("price i" + price);
 
       trial.Reservations[trial.Reservations.length - 1] = {
@@ -127,9 +130,31 @@ function ActiveUsers() {
         }))
         .filter((user) => user.isActive === true);
 
-      setData(filteredData);
-      setShowModal(true);
-      setDisplayPrice(price);
+    
+         // get today month 
+         const month = new Date().getMonth() + 1;
+         const year = new Date().getFullYear();
+         const day = new Date().getDate();
+         const docId = `${day}${month}${year}`;
+         
+         const cashRef = doc(db, "cash", docId);  
+         const cashDoc = await getDoc(cashRef);  
+         
+         if (cashDoc.exists()) {
+           const cash = cashDoc.data();
+           await updateDoc(cashRef, {
+             cashcollected: cash.cashcollected + price,
+           });
+         } else {
+           await setDoc(doc(db, "cash", docId), {  
+             cashcollected: price,
+           });
+         }
+         
+
+          setData(filteredData);
+          setShowModal(true);
+          setDisplayPrice(price);
     } else {
       console.log("User does not exist.");
     }
@@ -171,6 +196,8 @@ function ActiveUsers() {
           </div>
 
           {/*    this is to show the box when the user is active status is updated */}
+
+
           {showModal ? (
             <>
               <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -211,6 +238,8 @@ function ActiveUsers() {
               <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
             </>
           ) : null}
+
+
 
           {/* this is the table that is used to check if there is a data to show or not the  */}
           {data.length > 0 ? (
@@ -289,6 +318,10 @@ function ActiveUsers() {
               <h1 className="text-3xl text-gray-500">No Active Users Yet</h1>
             </div>
           )}
+
+
+
+
         </div>
 
         <div class="my-20 ..."></div>
