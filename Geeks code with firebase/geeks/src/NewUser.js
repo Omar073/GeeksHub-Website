@@ -35,8 +35,7 @@ export default function NewUser() {
           const user = userCredential.user;
           console.log(user)
           await setDoc(doc(users, user.uid), {
-            FirstName: FirstName,
-            LastName: LastName,
+            Name : FirstName + ' ' + LastName,
             Email: Email,
             PhoneNumber: PhoneNumber,
             Faculty: Faculty,
@@ -49,18 +48,28 @@ export default function NewUser() {
             Reservations : 
             []
             ,id : user.uid
+            ,subRequest: false
 
       })
       })
 
-      setUser(auth.currentUser);
-      console.log(auth.currentUser);
-      navigate('/home');
+      if (auth.currentUser) {
+        setUser(auth.currentUser);
+        console.log(auth.currentUser);
+        navigate('/home');
+        }
+        else {
+          console.log('User not found');
+          setUser(null);
+  
+        }
 
       }
       catch(error){
           console.log(error)
       }
+
+    
    
 }
 
@@ -71,8 +80,7 @@ const handleSignInWithGoogle = async () => {
           const user = userCredential.user;
           console.log(user)
           await setDoc(doc(users, user.uid), {
-            FirstName: user.displayName,
-            LastName: user.displayName,
+            Name : user.displayName,
             Email: user.email,
             PhoneNumber: '',
             Faculty: '',
@@ -84,6 +92,7 @@ const handleSignInWithGoogle = async () => {
             RemaningHours : 0,
             Reservations : [],
             id : user.uid
+            ,subRequest: false
 
       })
       })

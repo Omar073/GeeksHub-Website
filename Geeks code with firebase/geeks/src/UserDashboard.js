@@ -10,6 +10,28 @@ import { doc } from 'firebase/firestore';
 function UserDashboard() {
     const { authUserData, setauthUserData ,update, setUpdate } = useContext(UserContext);
 
+
+    const upcomingEvents = [
+        {
+          title: 'Tech Conference 2023',
+          date: 'Fri, Oct 27',
+          location: 'San Francisco, CA',
+          description: 'Join us at the Tech Conference 2023 where we will be discussing the latest advancements in technology!',
+        },
+        {
+          title: 'Startup Summit 2023',
+          date: 'Tue, Nov 14',
+          location: 'New York, NY',
+          description: 'Are you a startup founder? Join us at the Startup Summit 2023 and meet other entrepreneurs!',
+        },
+        {
+          title: 'Digital Marketing Expo 2023',
+          date: 'Fri, Dec 1',
+          location: 'Chicago, IL',
+          description: 'Learn about the latest digital marketing trends at the Digital Marketing Expo 2023!',
+        },
+      ];
+
    const  updateActiveStatus  = async () => {
      await updateDoc(doc(db, "users", authUserData.id), {
          isActive: true,
@@ -53,78 +75,105 @@ const print = () => console.log(authUserData);
 
                 <div className="p-4 sm:ml-64 ">
 
-                    <div className="p-4  flex flex-col space-y-10 ">
+                    <div className="p-4  flex flex-col gap-5 space-y-10 ">
+
+                        <h1 className=' font-bold text-3xl sm:text-center lg:text-left text-black animate-[wiggle_1s_ease-in-out_infinite]'>Welcome , {authUserData.Name}</h1>
 
 
                         
 {
-    authUserData.isActive? <div className="p-4 border-2 border-transparent w-3/2 rounded-lg drop-shadow-lg	dark:drop-shadow-none text-center	">
-
-    <span className="text-3xl font-helvetica">Your Time Has Started</span>
-    <button onClick={print} className=" bg-emerald-800 text-white font-bold py-2 px-4 rounded-full">
-                                Refresh
-
-                            </button>
-    </div>:<div className="p-4 border-2 drop-shadow-lg	dark:drop-shadow-none w-3/2 rounded-lg  text-center	">
-
-                            <span className="text-4xl font-bold font-helvetica">Start Your time </span>
-                            <button onClick={updateActiveStatus} className=" bg-emerald-800 text-white font-bold py-2 px-4 rounded-full">
-                                Start
-                            </button>
-
-                            <button onClick={print} className=" bg-emerald-800 text-white font-bold py-2 px-4 rounded-full">
-                                Refresh
-
-                            </button>
-
-                        </div>
+    authUserData.isActive? <div className="w-full lg:h-64  items-center grid grid-cols-1   shadow-lg rounded-lg overflow-hidden p-6 transform transition duration-500 hover:-translate-y-2">
+    <div className="flex items-center mb-4">
+     
+      <div className="ml-2 ">
+        <h2 className="text-2xl font-bold text-[#735672] mb-3">You're currently active </h2>
+        <p className="text-lg text-gray-500">Hope you are enjoying your time with us</p>
+      </div>
+    </div>
+    <div className="flex items-center justify-between">
+      <div className="text-lg text-gray-500">
+     
+      </div>
+      <div className="flex items-center">
+        <div className="w-4 h-4 bg-green-400 rounded-full animate-pulse mr-2"></div>
+        <p className="text-lg text-green-500 font-semibold"> Active</p>
+      </div>
+    </div>
+  </div>: <div className="w-full lg:h-64  items-center grid grid-cols-1   shadow-lg rounded-lg overflow-hidden p-6 transform transition duration-500 hover:-translate-y-2">
+        <div className="flex items-center mb-4">
+         
+          <div className="ml-2 ">
+            <h2 className="text-2xl font-bold text-[#735672] mb-3">You're currently not active </h2>
+            <p className="text-lg text-gray-500">Click the button and start your time at Geeks Hub</p>
+          </div>
+        </div>
+        <div className="flex items-center justify-between">
+          <div className="text-lg text-gray-500">
+         <button onClick={updateActiveStatus} className="bg-[#735672]  text-white font-bold py-2 px-4 rounded">
+        Start  time
+      </button>
+          </div>
+          <div className="flex items-center">
+            <div className="w-4 h-4 bg-red-400 rounded-full animate-pulse mr-2"></div>
+            <p className="text-lg text-red-500 font-semibold">Not Active</p>
+          </div>
+        </div>
+      </div>
 }
 
+<h1 className='text-center font-bold text-3xl text-[#735672] animate-bounce'>Join us for our upcoming events and Courses</h1>
+
+<div className='grid grid-cols-3 gap-6'>
+   
+<a href="#" className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 focus:outline-none">
+    <img className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="/docs/images/blog/image-4.jpg" alt=""/>
+    <div className="flex flex-col justify-between p-4 leading-normal">
+        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+    </div>
+</a>
+<a href="#" className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 focus:outline-none">
+    <img className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="/docs/images/blog/image-4.jpg" alt=""/>
+    <div className="flex flex-col justify-between p-4 leading-normal">
+        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+    </div>
+</a>
+<a href="#" className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 focus:outline-none">
+    <img className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="/docs/images/blog/image-4.jpg" alt=""/>
+    <div className="flex flex-col justify-between p-4 leading-normal">
+        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+    </div>
+</a>
+
+</div>
 
 
-                        <div className="p-4 border-2 border-transparent w-3/2 rounded-lg drop-shadow-lg	dark:drop-shadow-none text-center	">
 
-                            <span className="text-3xl font-helvetica">Current subscription plan:</span>
-                            <span className="text-3xl font-helvetica text-transparent bg-clip-text bg-gradient-to-r dark:bg-gradient-to-r from-amber-900 to-amber-500 dark:from-amber-100 dark:via-amber-50 dark:to-amber-500 "> <br/> <em> Premium </em> </span>
 
-                            <div className="row">
-                                <div className="col-md-5">
-                                    <div className="book_room ">
-                                        <h1 className="font-bold text-xl font-helvetica"><br/><br/>Book a Room Online</h1>
-                                        <form className="book_now  ">
-                                            <div className="row ">
-                                                <div className="col-md-12 ">
-                                                    <span><br/>Arrival: </span>
 
-                                                        <input class=" block  p-4 drop-shadow-lg pl-20 dark:drop-shadow-none w-full text-center text-gray-900  border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="00:00:PM" type="time" name="dd/mm/yyyy"/>
-                                                </div>
-                                                <div className="col-md-12">
-                                                    <span><br/>Hours: </span>
-                                                        <input class="block  p-4 text-gray-900  text-center pl-8 w-full border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="0"
-                                                               type="number" name="dd/mm/yyyy"/>
-                                                </div>
-                                                <div className="pt-5 col-md-12">
-                                                    <button
-                                                        className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800">
-                                                     <span
-                                                       className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                                                       Book Now
-                                                     </span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
 
-                        </div>
 
-                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
                 </div>
 
             </div>
+    </div>
+
+    
 
   )
 }

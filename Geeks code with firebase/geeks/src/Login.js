@@ -32,6 +32,7 @@ export default function Login() {
         event.preventDefault();
 
 
+
   
       try {
        
@@ -44,6 +45,7 @@ export default function Login() {
 
 
         })
+
 
 
        
@@ -70,14 +72,11 @@ export default function Login() {
           // do something with the user document
         } else {
           console.log('User document does not exist');
+          setUser(null);
         }
 
 
 
-        console.log(auth.currentUser);
-
-
-        console.log('user logged in');
         
 
       } catch (error) {
@@ -90,7 +89,7 @@ export default function Login() {
         await signInWithPopup(auth, Gprovider).then((result) => {
           const credential = GoogleAuthProvider.credentialFromResult(result);
           setUser(auth.currentUser);
-      console.log(auth.currentUser);
+          console.log(auth.currentUser);
       
 
         })
@@ -119,6 +118,7 @@ export default function Login() {
           // do something with the user document
         } else {
           console.log('User document does not exist');
+          setUser(null);
         }
 
       
