@@ -43,6 +43,11 @@ function LandingPage() {
             <span className="flex justify-center">Get Started</span>
         
         </a>
+        <a href="login"  className="inline-flex items-center px-5 py-3 mt-2 ml-0 text-sm font-medium text-gray-700 transition duration-300 border rounded shadow dark:hover:border-gray-500 hover:shadow-md md:ml-2 dark:text-gray-300">
+         
+         <span className="flex justify-center">Get Started</span>
+     
+     </a>
       </div>
     </div>
     <div className="relative w-full py-10 mx-auto text-center md:py-32 md:my-12 md:w-10/12">

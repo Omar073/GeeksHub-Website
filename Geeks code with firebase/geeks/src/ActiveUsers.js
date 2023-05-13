@@ -105,6 +105,8 @@ function ActiveUsers() {
         } else {
           time = time - trial.RemaningHours;
           trial.RemaningHours = 0;
+          trial.isSub = false;
+          
           price = time * 10;
         }
       } else {
@@ -152,6 +154,8 @@ function ActiveUsers() {
         await setDoc(doc(db, "cash", docId), {
           cashcollected: price,
           Reservations: 1,
+          SubscribersSecoundry: 0,
+          SubscribersPrimary: 0,
         });
       }
 
