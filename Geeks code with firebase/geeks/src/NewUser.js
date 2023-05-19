@@ -138,7 +138,7 @@ const tohome = () =>{  navigate('/'); }
     ="h-screen md:flex">
 	<div
 		className
-    ="relative overflow-hidden bg-[#6f596e] md:flex w-1/2 i justify-around items-center hidden">
+    ="relative overflow-hidden bg-gradient-to-r dark:bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 dark:from-pink-500 dark:via-purple-400 dark:to-indigo-500 md:flex w-1/2 i justify-around items-center hidden">
 		<div>
       {/* geeks hub label */}
 			<h1 className
@@ -159,9 +159,9 @@ const tohome = () =>{  navigate('/'); }
     ="absolute -top-20 -right-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
 	</div>
 	<div className
-  ="flex md:w-1/2 justify-center py-10 items-center bg-[#46aaab]">
+  ="flex md:w-1/2 justify-center py-10 items-center  ">
 		<form className
-    ="bg-[#46aaab]">
+    bg-white>
 			<h1 className
       ="text-gray-800 font-bold text-2xl mb-1">Hello Again!</h1>
 			<p className
