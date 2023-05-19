@@ -225,11 +225,7 @@ add employee button  */}
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">  
 <div class="flex flex-col">
-  {
-    employees.length > 0 ? (
-      employees.map((employee) => (
-
-        <table class=" w-full  text-sm text-left text-gray-500 dark:text-gray-400 ">
+   <table class=" w-full  text-sm text-left text-gray-500 dark:text-gray-400 ">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
            
@@ -250,6 +246,11 @@ add employee button  */}
         </thead>
         <tbody>
        
+  {
+    employees.length > 0 ? (
+      employees.map((employee) => (
+
+       
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
              
               <th
@@ -263,8 +264,7 @@ add employee button  */}
               <td class="px-6 py-4"> {employee.prevMonth}</td>
               
             </tr>
-        </tbody>
-      </table>
+     
     
 
       ))
@@ -275,6 +275,8 @@ add employee button  */}
     )
 
   }
+     </tbody>
+      </table>
 </div>
 </div>
 

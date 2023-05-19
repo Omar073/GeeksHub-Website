@@ -7,30 +7,29 @@ import { db } from './config/firebase';
 import { collection } from "firebase/firestore";
 import { updateDoc } from 'firebase/firestore';
 import { doc } from 'firebase/firestore';
+import { getDocs } from 'firebase/firestore';
+import { useState } from 'react';
+import { useEffect } from 'react';
 function UserDashboard() {
     const { authUserData, setauthUserData ,update, setUpdate } = useContext(UserContext);
+    const [events , setEvents] = useState([])
 
 
-    const upcomingEvents = [
-        {
-          title: 'Tech Conference 2023',
-          date: 'Fri, Oct 27',
-          location: 'San Francisco, CA',
-          description: 'Join us at the Tech Conference 2023 where we will be discussing the latest advancements in technology!',
-        },
-        {
-          title: 'Startup Summit 2023',
-          date: 'Tue, Nov 14',
-          location: 'New York, NY',
-          description: 'Are you a startup founder? Join us at the Startup Summit 2023 and meet other entrepreneurs!',
-        },
-        {
-          title: 'Digital Marketing Expo 2023',
-          date: 'Fri, Dec 1',
-          location: 'Chicago, IL',
-          description: 'Learn about the latest digital marketing trends at the Digital Marketing Expo 2023!',
-        },
-      ];
+    // use effect to get all of the current events 
+    useEffect(() => {
+
+        const getEvents = async () => {
+            const eventsCol = collection(db, "events");
+            const eventsSnapshot = await getDocs(eventsCol);
+            const eventsList = eventsSnapshot.docs.map((doc) => doc.data());
+            setEvents(eventsList);
+        }
+        getEvents();
+    }, [])
+
+
+
+   
 
    const  updateActiveStatus  = async () => {
      await updateDoc(doc(db, "users", authUserData.id), {
@@ -143,28 +142,21 @@ const print = () => console.log(authUserData);
 <h1 className='text-center font-bold text-3xl text-[#735672] animate-bounce'>Join us for our upcoming events and Courses</h1>
 
 <div className='grid grid-cols-3 gap-6'>
-   
-<a href="#" className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 focus:outline-none">
-    <img className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="/docs/images/blog/image-4.jpg" alt=""/>
+   {
+        events.map((event) => (
+          <a href={event.link} className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 focus:outline-none">
+    <img className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src={event.image} alt=""/>
     <div className="flex flex-col justify-between p-4 leading-normal">
-        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{event.name}</h5>
+        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{event.description}</p>
     </div>
 </a>
-<a href="#" className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 focus:outline-none">
-    <img className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="/docs/images/blog/image-4.jpg" alt=""/>
-    <div className="flex flex-col justify-between p-4 leading-normal">
-        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-    </div>
-</a>
-<a href="#" className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 focus:outline-none">
-    <img className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="/docs/images/blog/image-4.jpg" alt=""/>
-    <div className="flex flex-col justify-between p-4 leading-normal">
-        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-    </div>
-</a>
+        ))
+
+
+   }
+
+
 
 </div>
 
