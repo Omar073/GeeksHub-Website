@@ -5,9 +5,10 @@ import { getDocs ,collection , addDoc ,setDoc  ,doc} from 'firebase/firestore'
 import { auth , db } from './config/firebase'
 import { AuthContext } from './context/Auth';
 import { useContext } from 'react';
-import {useNavigate} from 'react-router-dom'
+import {Form, useNavigate} from 'react-router-dom'
 import { Gprovider } from './config/firebase';
 import { getDoc } from 'firebase/firestore'
+
 
 export default function NewUser() {
   const users= collection(db, 'users')
@@ -133,88 +134,118 @@ const handleSignInWithGoogle = async () => {
 
 
   return (
-    <div>
+ 
       
-    <section className="bg-gray-50 dark:bg-gray-900">
-  <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-      <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-      <img className="w-20 h-10 mr-2" src='/images/logo geeks.png' alt="logo" 
-         />
-              
-      </a>
-      <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                  Create and account
-              </h1>
-              <form className="space-y-4 md:space-y-6" action="#">
-               {/*  First name */}
-              <div>
-                      <label for="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First Name</label>
-                      <input type="text" name="FirstName" id="FirstName" onChange={(e) => setFirstName(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="First" required=""/>
+  
+    <section class="gradient-form h-full bg-neutral-200 dark:bg-neutral-700">
+    <div class="container h-full p-10">
+      <div
+        class="g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200">
+        <div class="w-full">
+          <div
+            class="block rounded-lg bg-white shadow-lg dark:bg-neutral-800">
+            <div class="g-0 lg:flex lg:flex-wrap">
+              {/* <!-- Left column container--> */}
+              <div class="px-4 md:px-0 lg:w-6/12">
+                <div class="md:mx-6 md:p-12">
+                  {/* <!--Logo--> */}
+                  <div class="text-center">
+                    <img
+                      class="mx-auto w-48"
+                      src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+                      alt="logo" />
+                    <h4 class="mb-12 mt-1 pb-1 text-xl font-semibold">
+                      We are The Lotus Team
+                    </h4>
                   </div>
-                {/*  Last name */}
-                <div>
-                      <label for="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last name</label>
-                      <input type="text" name="LastName" id="LastName" onChange={(e) => setLastName(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Last" required=""/>
+  
+                  <form>
+                    <p class="mb-4">Please login to your account</p>
+                    {/* <!--Username input--> */}
+                    <div class="relative mb-4" data-te-input-wrapper-init>
+                      <input
+                        type="text"
+                        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                        id="exampleFormControlInput1"
+                        placeholder="Username" />
+                      <label
+                        for="exampleFormControlInput1"
+                        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary-600 peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                        >Email address
+                      </label>
+                    </div>
+  
+                   {/* password input */}
+                    <div class="relative mb-4" data-te-input-wrapper-init>
+                      <input
+                        type="password"
+                        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                        id="exampleFormControlInput11"
+                        placeholder="Password"  onChange={(e) => setPassword(e.target.value)}/>
+                      <label
+                        for="exampleFormControlInput11"
+                        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary-600 peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                        >Password
+                      </label>
+                    </div>
+  
+                  {/* submit button */}
+                    <div class="mb-12 pb-1 pt-1 text-center">
+                      <button
+                        class="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
+                        type="button"
+                        data-te-ripple-init
+                        data-te-ripple-color="light"
+                        
+                        onClick={handleSubmit}>
+                        Log in
+                      </button>
+  
+                      {/* <!--Forgot password link--> */}
+                      <a href="#!">Forgot password?</a>
+                    </div>
+  
+                    {/* <!--Register button--> */}
+                    <div class="flex items-center justify-between pb-6">
+                      <p class="mb-0 mr-2">Don't have an account?</p>
+                      <button
+                        type="button"
+                        class="inline-block rounded border-2 border-danger px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out hover:border-danger-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-danger-600 focus:border-danger-600 focus:text-danger-600 focus:outline-none focus:ring-0 active:border-danger-700 active:text-danger-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
+                        data-te-ripple-init
+                        data-te-ripple-color="light">
+                        Register
+                      </button>
+                    </div>
+                  </form>
                 </div>
+              </div>
+  
+              {/* <!-- Right column container with background and description--> */}
+              <div
+                class="flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none"
 
-                  {/* Email Section  */}
-                  <div>
-                      <label for="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-                      <input type="email" name="email" id="email" onChange={(e)=>setEmail(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required=""/>
-                  </div>
-                 {/*  Password Section */}
-                  <div>
-                      <label for="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                      <input type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required=""/>
-                  </div>
-                 {/*  Confirm Password */}
-                  <div>
-                      <label for="confirm-password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm password</label>
-                      <input type="confirm-password" name="confirm-password" onChange={(e) => setConfirmPassword(e.target.value)} id="confirm-password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required=""/>
-                  </div>
-
-                {/*  Phone Number */}
-                <div>
-                      <label for="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Phone number</label>
-                      <input type="text" name="phonenumber" id="phonenumber" onChange={(e) => setPhoneNumber(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="01020304050" required=""/>
-                </div>
-
-                {/*  Faculty */}
-                 <div>
-                      <label for="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Faculty</label>
-                      <input type="text" name="Faculty" id="Faculty" onChange={(e) => setFaculty(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required=""/>
-                </div>
-                  
-                  
-
-              
-
-
-                  <div className="flex items-start">
-                      <div className="flex items-center h-5">
-                        <input id="terms" aria-describedby="terms" type="checkbox" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800" required=""/>
-                      </div>
-                      <div className="ml-3 text-sm">
-                        <label for="terms" className="font-light text-gray-500 dark:text-gray-300">I accept the <a className="font-medium text-primary-600 hover:underline dark:text-primary-500" href="#">Terms and Conditions</a></label>
-                      </div>
-                  </div>
-                  <button type="submit" onClick={handleSubmit} className="w-full text-white bg-blue-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                  Create an account 
-                    </button>
-                    <button type="button" onClick={handleSignInWithGoogle} className="text-white w-full  justify-center  bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2">
-<svg className="mr-2 -ml-1 w-4 h-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path></svg>
-Sign Up with Google
-</button>
-                  <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                      Already have an account? <a href="signin" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Login here</a>
+                >
+                <div class="px-4 py-6 text-white md:mx-6 md:p-12">
+                  <h4 class="mb-6 text-xl font-semibold">
+                    We are more than just a company
+                  </h4>
+                  <p class="text-sm">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip ex
+                    ea commodo consequat.
                   </p>
-              </form>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
       </div>
-  </div>
-</section>
-</div>
+    </div>
+  </section>
+
+  
+
   )
 }
