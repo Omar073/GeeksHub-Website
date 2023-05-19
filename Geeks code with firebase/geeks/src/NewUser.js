@@ -139,7 +139,7 @@ const tohome = () =>{  navigate('/'); }
     ="h-screen md:flex  py-2 px-2 shadow-2xl rounded-full" >
 	<div
 		className
-    ="rounded-md relative overflow-hidden bg-[#6f596e] bg-blue-500 hover:bg-[#429D9B] md:flex w-1/2 i justify-around items-center hidden">
+    ="rounded-md relative overflow-hidden bg-gradient-to-tr from-blue-800 to-purple-700 md:flex w-1/2 i justify-around items-center hidden ">
 		<div>
       {/* geeks hub label */}
 			<h1 className
