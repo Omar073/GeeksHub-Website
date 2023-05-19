@@ -138,7 +138,7 @@ const tohome = () =>{  navigate('/'); }
     ="h-screen md:flex">
 	<div
 		className
-    ="relative overflow-hidden bg-[#28a9a7] bg-blue-500 hover:bg-#6f596e-700 md:flex w-1/2 i justify-around items-center hidden">
+    ="relative overflow-hidden bg-[#6f596e] bg-blue-500 hover:bg-[#429D9B] md:flex w-1/2 i justify-around items-center hidden">
 		<div>
       {/* geeks hub label */}
 			<h1 className
