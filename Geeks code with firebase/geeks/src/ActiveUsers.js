@@ -73,7 +73,7 @@ function ActiveUsers() {
     getUsers();
     getSubUsers();
     setUpdate(update + 1);
-  }, [data,]);
+  }, []);
 
   // this is the function that is used to update the user is active status to false and update the price in the firestore and show the modal
   const updateUserActivity = async (id) => {
