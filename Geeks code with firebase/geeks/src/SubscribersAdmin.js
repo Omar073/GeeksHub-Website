@@ -81,7 +81,7 @@ export default function SubscribersAdmin() {
 
   
   
-  }, [inputValue, data]);
+  }, [inputValue]);
   
 
   const handlePrime = async (id) => {
