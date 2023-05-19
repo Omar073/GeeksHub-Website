@@ -127,7 +127,7 @@ const handleSignInWithGoogle = async () => {
 
 }
 
-
+const tohome = () =>{  navigate('/'); }
 
 
 
@@ -138,13 +138,15 @@ const handleSignInWithGoogle = async () => {
     ="h-screen md:flex">
 	<div
 		className
-    ="relative overflow-hidden md:flex w-1/2 bg-gradient-to-tr from-blue-800 to-purple-700 i justify-around items-center hidden">
+    ="relative overflow-hidden bg-[#6f596e] bg-blue-500 hover:bg-[#429D9B] md:flex w-1/2 i justify-around items-center hidden">
 		<div>
+      {/* geeks hub label */}
 			<h1 className
-      ="text-white font-bold text-4xl font-sans">GoFinance</h1>
+      ="text-white font-bold text-4xl font-sans text-transparent bg-clip-text bg-gradient-to-r dark:bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 dark:from-pink-500 dark:via-purple-400 dark:to-indigo-500">Geeks Hub</h1>
 			<p className
-      ="text-white mt-1">The most popular peer to peer lending at SEA</p>
-			<button type="submit" className
+      ="text-white mt-1">Join the hub of innovation and collaboration at</p>
+      {/* button read more */}
+			<button type="submit" onClick={tohome} className
       ="block w-28 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2">Read More</button>
 		</div>
 		<div className
@@ -157,9 +159,9 @@ const handleSignInWithGoogle = async () => {
     ="absolute -top-20 -right-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
 	</div>
 	<div className
-  ="flex md:w-1/2 justify-center py-10 items-center bg-white">
+  ="flex md:w-1/2 justify-center py-10 items-center  ">
 		<form className
-    ="bg-white">
+    bg-white>
 			<h1 className
       ="text-gray-800 font-bold text-2xl mb-1">Hello Again!</h1>
 			<p className
