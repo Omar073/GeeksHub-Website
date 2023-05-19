@@ -138,7 +138,7 @@ const tohome = () =>{  navigate('/'); }
     ="h-screen md:flex">
 	<div
 		className
-    ="relative overflow-hidden md:flex w-1/2 bg-gradient-to-tr from-blue-800 to-purple-700 i justify-around items-center hidden">
+    ="relative overflow-hidden bg-[#6f596e] md:flex w-1/2 i justify-around items-center hidden">
 		<div>
       {/* geeks hub label */}
 			<h1 className
@@ -161,7 +161,7 @@ const tohome = () =>{  navigate('/'); }
 	<div className
   ="flex md:w-1/2 justify-center py-10 items-center bg-white">
 		<form className
-    ="bg-white">
+    ="bg-[#46aaab]">
 			<h1 className
       ="text-gray-800 font-bold text-2xl mb-1">Hello Again!</h1>
 			<p className
