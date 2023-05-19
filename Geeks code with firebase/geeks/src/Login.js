@@ -45,14 +45,6 @@ export default function Login() {
     }
   };
 
-  // const handleGoogleLogin = async () => {
-  //   try {
-  //     const result = await signInWithPopup(auth, GoogleAuthProvider);
-  //     const credential = GoogleAuthProvider.credentialFromResult(result);
-  //     setUser(auth.currentUser);
-  //     console.log(auth.currentUser);edit
-  // };
-
   return (
     <div className="gradient-form h-full bg-neutral-200 dark:bg-neutral-700">
       <div className="container h-full p-10">
