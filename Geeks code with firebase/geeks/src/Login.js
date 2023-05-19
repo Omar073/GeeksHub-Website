@@ -156,35 +156,3 @@ export default function Login() {
     </div>
   );
 }  
-
-
-/*
-
-Title: GeeksHub: Revolutionizing Collaboration and Productivity in Modern Workspaces
-
-Introduction:
-In today's fast-paced world, finding the perfect workspace that fosters collaboration, creativity, and productivity is crucial for individuals, teams, and businesses. GeeksHub emerges as a revolutionary project, providing a platform that goes beyond a conventional co-working space. With its vibrant community, cutting-edge infrastructure, and innovative approach, GeeksHub aims to transform the way people work, learn, and achieve their goals.
-
-Unleashing Productivity:
-GeeksHub understands that productivity is not solely dependent on physical surroundings; it stems from a harmonious blend of factors. At GeeksHub, professionals, students, and teams converge in an environment designed to fuel inspiration and motivation. The workspace is thoughtfully crafted, featuring ergonomic furniture, ample natural lighting, and modern amenities. These elements contribute to a positive and energizing atmosphere, enhancing focus, creativity, and overall productivity.
-
-Collaboration at its Core:
-One of GeeksHub's core strengths lies in its vibrant community. It serves as a melting pot of diverse talents, fostering collaboration and knowledge-sharing. Whether you're a freelancer seeking networking opportunities, a startup looking for potential collaborators, or a student seeking mentorship, GeeksHub provides the ideal platform to connect with like-minded individuals. By facilitating organic interactions, GeeksHub cultivates an environment that nurtures innovation, problem-solving, and professional growth.
-
-State-of-the-Art Infrastructure:
-GeeksHub sets itself apart by providing state-of-the-art infrastructure that caters to the evolving needs of modern professionals. High-speed internet, advanced technology solutions, and well-equipped meeting rooms ensure seamless communication and efficient workflows. GeeksHub understands the importance of staying ahead in the digital age and embraces technological advancements to empower its members.
-
-Learning and Development:
-GeeksHub believes that learning should be a lifelong journey. Through its various programs, workshops, and events, GeeksHub encourages continuous learning and professional development. Industry experts and thought leaders are invited to share their insights, providing valuable knowledge to the community. GeeksHub also offers mentorship opportunities, allowing individuals to tap into the vast expertise within the community. By fostering a culture of learning, GeeksHub enables its members to stay updated, acquire new skills, and unlock their full potential.
-
-Community Engagement:
-GeeksHub goes beyond the conventional workspace model by actively engaging its community members. Regular social events, networking sessions, and collaborative projects create a sense of belonging and camaraderie among the members. GeeksHub believes in the power of a supportive community, where individuals can find inspiration, encouragement, and a network of peers. Through community-driven initiatives, GeeksHub empowers its members to thrive both professionally and personally.
-
-Impact and Future Prospects:
-Since its inception, GeeksHub has been making a significant impact on the way people work and collaborate. Its success stories include startups that found their ideal co-founder, professionals who landed new opportunities through networking, and students who gained valuable industry insights. GeeksHub's commitment to innovation and continuous improvement ensures that it remains at the forefront of the evolving workspace landscape.
-
-Looking ahead, GeeksHub envisions expansion into new locations, both locally and globally, to reach a wider audience and facilitate greater collaboration. The project aims to become a beacon of creativity and productivity, where individuals and teams can come together to make a difference in their respective fields. With its user-centric approach, GeeksHub is well-positioned to redefine the future of work and inspire the next generation of innovators.
-
-Conclusion:
-GeeksHub represents a paradigm shift in the concept of workspaces. By providing a platform that combines collaboration, productivity, and community engagement, GeeksHub has created an ecosystem that empowers individuals and fosters professional growth. Through its state-of-the-art infrastructure, vibrant community, and commitment to continuous learning, GeeksHub is revolutionizing the way people work, learn, and connect. As it continues to expand its reach and impact, GeeksHub is poised to shape the future of work and redefine the boundaries of what is possible in a collaborative environment.
-*/
