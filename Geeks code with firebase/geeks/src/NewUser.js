@@ -9,6 +9,7 @@ import {useNavigate} from 'react-router-dom'
 import { Gprovider } from './config/firebase';
 import { getDoc } from 'firebase/firestore'
 
+
 export default function NewUser() {
   const users= collection(db, 'users')
 
@@ -135,7 +136,7 @@ const tohome = () =>{  navigate('/'); }
   return (
 
     <div className
-    ="h-screen md:flex">
+    ="h-screen md:flex  py-5 px-5 rounded-full" >
 	<div
 		className
     ="relative overflow-hidden bg-[#6f596e] bg-blue-500 hover:bg-[#429D9B] md:flex w-1/2 i justify-around items-center hidden">
@@ -144,7 +145,7 @@ const tohome = () =>{  navigate('/'); }
 			<h1 className
       ="text-white font-bold text-4xl font-sans text-transparent bg-clip-text bg-gradient-to-r dark:bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 dark:from-pink-500 dark:via-purple-400 dark:to-indigo-500">Geeks Hub</h1>
 			<p className
-      ="text-white mt-1">Join the hub of innovation and collaboration at</p>
+      ="text-white mt-1">Join the hub of innovation and collaboration </p>
       {/* button read more */}
 			<button type="submit" onClick={tohome} className
       ="block w-28 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2">Read More</button>
@@ -158,6 +159,9 @@ const tohome = () =>{  navigate('/'); }
 		<div className
     ="absolute -top-20 -right-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
 	</div>
+  {/* container */}
+  <div class="container mx-auto">
+  
 	<div className
   ="flex md:w-1/2 justify-center py-10 items-center  ">
 		<form className
@@ -259,7 +263,9 @@ const tohome = () =>{  navigate('/'); }
 							<span className
               ="text-sm ml-2 hover:text-blue-500 cursor-pointer">Forgot Password ?</span>
 		</form>
+    </div>
 	</div>
+  
 </div>
   )
 }
