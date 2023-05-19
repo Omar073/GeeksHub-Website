@@ -303,7 +303,7 @@ function ActiveUsers() {
                       scope="row"
                       class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                     >
-                      {user.FirstName} {user.LastName}
+                      {user.Name}
                     </th>
                     <td class="px-6 py-4">{user.Email}</td>
                     <td class="px-6 py-4">{user.Reservations[user.Reservations.length-1].startTimeHour}h  {user.Reservations[user.Reservations.length-1].startTimeMin}m </td>
@@ -313,8 +313,8 @@ function ActiveUsers() {
                         onClick={() => updateUserActivity(user.id)}
                         className=" bg-blue-600 text-white  w-full "
                       >
-                        {" "}
-                        Edit
+                        
+                        Check Out
                       </button>
                     </td>
                   </tr>

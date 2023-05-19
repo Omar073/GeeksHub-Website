@@ -89,6 +89,34 @@ setDatacopy(data.docs.map((doc) => ({
       
         
       };
+
+
+      // is to update the user isblocked boolean
+      const updateIsBlocked = async (id) => {
+        const userRef = doc(db, "users", id);
+        const userDoc = await getDoc(userRef);
+        if (userDoc.exists()) {
+          const user = userDoc.data();
+          await updateDoc(userRef, {
+            isBlocked: true,
+          });
+        }
+      }
+
+      // is to unblock the user isblocked 
+      const updateIsUnBlocked = async (id) => {
+        const userRef = doc(db, "users", id);
+        const userDoc = await getDoc(userRef);
+        if (userDoc.exists()) {
+          const user = userDoc.data();
+          await updateDoc(userRef, {
+            isBlocked: false,
+          });
+        }
+      }
+
+         
+            
       
       
 
@@ -151,33 +179,47 @@ setDatacopy(data.docs.map((doc) => ({
                 </tr>
               </thead>
               <tbody>
-                {data.map((user) => (
-                  <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <th
-                      scope="row"
-                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                    >
-                      {user.FirstName} {user.LastName}
-                    </th>
-                    <td className="px-6 py-4">{user.Email}</td>
-                    <td className="px-6 py-4">{user.PhoneNumber}</td>
-                    <td className="px-6 py-4">{user.RemaningHours}</td>
-                    <td className="px-6 py-4">
-                      <a
-                        href="#"
-                        className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                      >
-                        Edit
-                      </a>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
+  {data.map((user) => (
+    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={user.id}>
+      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+        {user.Name}
+      </th>
+      <td className="px-6 py-4">{user.Email}</td>
+      <td className="px-6 py-4">{user.PhoneNumber}</td>
+      <td className="px-6 py-4">{user.RemaningHours}</td>
+      {user.isBlocked === false ? (
+        <>
+          <td className="px-6 py-4">
+            <button
+              className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+              onClick={() => updateIsBlocked(user.id)}
+            >
+              Block User
+            </button>
+          </td>
+        </>
+      ) : (
+        <>
+          <td className="px-6 py-4">
+            <button
+              className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+              onClick={() => updateIsUnBlocked(user.id)}
+            >
+              Unblock User
+            </button>
+          </td>
+        </>
+      )}
+    </tr>
+  ))}
+</tbody>
+
             </table>
             </>
           ) : (
             <div className="flex justify-center items-center h-96">
               <h1 className="text-3xl text-gray-500">No Subscribers Yet</h1>
+
             </div>
           )}
         </div>

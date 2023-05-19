@@ -82,6 +82,25 @@ const print = () => console.log(authUserData);
 
                         
 {
+   authUserData.isBlocked ? <div className="w-full lg:h-64  items-center grid grid-cols-1   shadow-lg rounded-lg overflow-hidden p-6 transform transition duration-500 hover:-translate-y-2">
+   <div className="flex items-center mb-4">
+    
+     <div className="ml-2 ">
+       <h2 className="text-2xl font-bold text-[#735672] mb-3">You're Blooked from geeks hub</h2>
+       <p className="text-lg text-gray-500"></p>
+     </div>
+   </div>
+   <div className="flex items-center justify-between">
+     <div className="text-lg text-gray-500">
+    
+     </div>
+     <div className="flex items-center">
+       <div className="w-4 h-4 bg-red-400 rounded-full animate-pulse mr-2"></div>
+       <p className="text-lg text-red-500 font-semibold"> Blocked</p>
+     </div>
+   </div>
+ </div> :
+
     authUserData.isActive? <div className="w-full lg:h-64  items-center grid grid-cols-1   shadow-lg rounded-lg overflow-hidden p-6 transform transition duration-500 hover:-translate-y-2">
     <div className="flex items-center mb-4">
      
