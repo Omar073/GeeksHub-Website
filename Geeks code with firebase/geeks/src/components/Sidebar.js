@@ -15,6 +15,7 @@ import { MdOutlineIntegrationInstructions } from "react-icons/md";
 import { MdOutlineSettings } from "react-icons/md";
 import { MdOutlineLogout } from "react-icons/md";
 import { UserContext } from  '../context/UserContext'
+import {RiHistoryLine} from 'react-icons/ri'
 
 
 function Sidebar() {
@@ -80,17 +81,10 @@ function Sidebar() {
                       </h3>
                       </Link>
                     </div>
-                    <div className="flex  mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                    <Link to='subscibers' className='flex m-1 gap-4' >
-                      <FaRegComments className="text-2xl text-gray-600 group-hover:text-white " />
-                      <h3 className="text-base text-gray-800 group-hover:text-white font-semibold ">
-                        Book a room
-                      </h3>
-                      </Link>
-                    </div>
+                    
                     <div className="flex  mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
                     <Link to='reservations' className='flex m-1 gap-4' >
-                      <MdOutlineAnalytics className="text-2xl text-gray-600 group-hover:text-white " />
+                      <RiHistoryLine className="text-2xl text-gray-600 group-hover:text-white " />
                       <h3 className="text-base text-gray-800 group-hover:text-white font-semibold ">
                         Reservation History
                       </h3>

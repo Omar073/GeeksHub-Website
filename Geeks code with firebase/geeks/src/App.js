@@ -21,7 +21,9 @@ import EmplyeePrivateRoute from './context/EmployeePrivateRoute';
 import MyShiftsEmployee from './MyShiftsEmployee';
 import EmployeesAdmin from './EmployeesAdmin';
 import Analytics from './Analytics';
-
+import Events from './Events';
+import Allusers from './Allusers';
+import EmployeeSettings from './EmployeeSettings';
 function App() {
   return (
     <BrowserRouter>
@@ -46,6 +48,9 @@ function App() {
           <Route path="adminsettings" element={<AdminSettings />} />
           <Route path="employees" element={<EmployeesAdmin />} />
           <Route path="analytics" element={<Analytics />} />
+          <Route path="events" element={<Events />} />
+          <Route path="allusers" element={<Allusers />} />
+
 
         </AdminPrivateRoute>} />
 
@@ -54,6 +59,9 @@ function App() {
           <Route path="subscibers" element={<SubscribersAdmin />} />
           <Route path ="myshifts" element={<MyShiftsEmployee/>}/>
           <Route path="analytics" element={<Analytics />} />
+          <Route path="allusers" element={<Allusers />} />
+          <Route path="settings" element={<EmployeeSettings />} />
+
           
         </EmplyeePrivateRoute>} />
 
