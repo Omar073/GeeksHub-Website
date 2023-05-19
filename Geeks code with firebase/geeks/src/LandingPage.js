@@ -68,6 +68,8 @@ function LandingPage() {
       Work smarter, not harder at Geeks Hub
       </p>
     </div>
+
+    
   </div>
 </section>
 <Features />

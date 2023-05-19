@@ -107,22 +107,6 @@ setDatacopy(data.docs.map((doc) => ({
         <div className="grid grid-cols-1 gap-5 overflow-x-auto sm:rounded-lg">
 
 
-          <div>
-            <div className="w-full lg:h-64  items-center grid grid-cols-1 bg-white shadow-lg rounded-lg overflow-hidden p-6 transform transition duration-500 hover:-translate-y-2">
-              <div className="flex items-center mb-4">
-                <div className="ml-2">
-                  <h2 className="text-2xl font-semibold text-gray-900">
-                    Subscription request
-                  </h2>
-                </div>
-              </div>
-              <div className="flex items-center justify-between">
-                
-              </div>
-            </div>
-          </div>
-
-
 
 
 
