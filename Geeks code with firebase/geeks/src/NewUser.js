@@ -159,7 +159,7 @@ const tohome = () =>{  navigate('/'); }
     ="absolute -top-20 -right-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
 	</div>
 	<div className
-  ="flex md:w-1/2 justify-center py-10 items-center bg-white">
+  ="flex md:w-1/2 justify-center py-10 items-center bg-[#46aaab]">
 		<form className
     ="bg-[#46aaab]">
 			<h1 className
