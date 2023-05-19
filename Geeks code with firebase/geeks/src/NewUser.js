@@ -180,7 +180,7 @@ const tohome = () =>{  navigate('/'); }
 						clip-rule="evenodd" />
 				</svg>
 				<input className
-        =" pl-2 outline-none border-none"  onChange={(e) => setFirstName(e.target.value)} type="text" name="" id="" placeholder="Full name" />
+        =" pl-3 outline-none border-none"  onChange={(e) => setFirstName(e.target.value)} type="text" name="" id="" placeholder="Full name" />
       </div>
 {/* last name */}
 				<div className
