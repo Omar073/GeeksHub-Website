@@ -147,19 +147,66 @@ const updateEmployeeWork = async (id) => {
 
            {
               activeShift.isWorking & activeShift.id == authUserData.id ? (
-                <div className='flex flex-col w-full'>
-                    <h1 className='text-black'>you are working</h1>
-                    </div>
+                <div className="w-full lg:h-64  items-center grid grid-cols-1   shadow-lg rounded-lg overflow-hidden p-6 transform transition duration-500 hover:-translate-y-2">
+                <div className="flex items-center mb-4">
+                 
+                  <div className="ml-2 ">
+                    <h2 className="text-2xl font-bold text-[#735672] mb-3">You're currently active </h2>
+                    <p className="text-lg text-gray-500">Good luck</p>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="text-lg text-gray-500">
+                 
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-4 h-4 bg-green-400 rounded-full animate-pulse mr-2"></div>
+                    <p className="text-lg text-green-500 font-semibold"> Active</p>
+                  </div>
+                </div>
+              </div>
                 ) : activeShift.isWorking & activeShift.id !== authUserData.id ? (
-                    <div className='flex flex-col'>
-                        <h1 className='text-black'>someone else is working</h1>
+                  <div className="w-full lg:h-64  items-center grid grid-cols-1   shadow-lg rounded-lg overflow-hidden p-6 transform transition duration-500 hover:-translate-y-2">
+                  <div className="flex items-center mb-4">
+                   
+                    <div className="ml-2 ">
+                      <h2 className="text-2xl font-bold text-[#735672] mb-3">{activeShift.Name} is currently active </h2>
+                      <p className="text-lg text-gray-500"></p>
                     </div>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div className="text-lg text-gray-500">
+                   
+                    </div>
+                    <div className="flex items-center">
+                      <div className="w-4 h-4 bg-orange-400 rounded-full animate-pulse mr-2"></div>
+                      <p className="text-lg text-orange-500 font-semibold"> </p>
+                    </div>
+                  </div>
+                </div>
                 ) : (
-                    <div className='flex flex-col'>
-                        <h1 className='text-black'>you are not working</h1>
-                        <button onClick={()=> updateEmployeeWork(authUserData.id)} className='bg-emerald-800 text-white font-bold py-2 px-4 rounded-full'>Start my shift </button>
-
+                  <div className="w-full lg:h-64  items-center grid grid-cols-1   shadow-lg rounded-lg overflow-hidden p-6 transform transition duration-500 hover:-translate-y-2">
+                  <div className="flex items-center mb-4">
+                   
+                    <div className="ml-2 ">
+                      <h2 className="text-2xl font-bold text-[#735672] mb-3">No one is currently working </h2>
+                      <p className="text-lg text-gray-500">you can start your shift now</p>
                     </div>
+                  </div>
+                  <div className="flex items-center justify-between">
+                  <button onClick={()=> updateEmployeeWork(authUserData.id)} className='bg-emerald-800 text-white font-bold py-2 px-4 rounded-full'>Start my shift </button>
+
+                    <div className="text-lg text-gray-500">
+                   
+                    </div>
+                    <div className="flex items-center">
+                      <div className="w-4 h-4 bg-red-400 rounded-full animate-pulse mr-2"></div>
+                      <p className="text-lg text-red-500 font-semibold"> Not Active</p>
+                    </div>
+                  </div>
+                </div>
+
+                  
                 )
        } 
 
