@@ -66,7 +66,7 @@ setDatacopy(data.docs.map((doc) => ({
     
       
       
-      }, [inputValue, data]);
+      }, [inputValue]);
       
       
    
