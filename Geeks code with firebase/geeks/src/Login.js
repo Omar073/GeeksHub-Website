@@ -45,34 +45,8 @@ export default function Login() {
     }
   };
 
-  const handleGoogleLogin = async () => {
-    try {
-      const result = await signInWithPopup(auth, GoogleAuthProvider);
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      setUser(auth.currentUser);
-      console.log(auth.currentUser);
-
-      const userDocRef = doc(db, 'users', auth.currentUser.uid);
-      const userDocSnap = await getDoc(userDocRef);
-      setUpdate(update + 1);
-
-      if (userDocSnap.exists()) {
-        console.log('User document exists');
-        if (userDocSnap.data().isAdmin) {
-          navigate('/admin');
-        } else if (userDocSnap.data().isEmployee) {
-          navigate('/employee');
-        } else {
-          navigate('/home');
-        }
-      } else {
-        console.log('User document does not exist');
-        setUser(null);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const handleGoogleLogin = async () => {
+  // };
 
   return (
     <div className="gradient-form h-full bg-neutral-200 dark:bg-neutral-700">
