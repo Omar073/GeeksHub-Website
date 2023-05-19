@@ -127,7 +127,7 @@ const handleSignInWithGoogle = async () => {
 
 }
 
-const tohome = () =>{navigate('/'); }
+const tohome = () =>{  navigate('/'); }
 
 
 
@@ -140,10 +140,12 @@ const tohome = () =>{navigate('/'); }
 		className
     ="relative overflow-hidden md:flex w-1/2 bg-gradient-to-tr from-blue-800 to-purple-700 i justify-around items-center hidden">
 		<div>
+      {/* geeks hub label */}
 			<h1 className
       ="text-white font-bold text-4xl font-sans text-transparent bg-clip-text bg-gradient-to-r dark:bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 dark:from-pink-500 dark:via-purple-400 dark:to-indigo-500">Geeks Hub</h1>
 			<p className
       ="text-white mt-1">Join the hub of innovation and collaboration at</p>
+      {/* button read more */}
 			<button type="submit" onClick={tohome} className
       ="block w-28 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2">Read More</button>
 		</div>
