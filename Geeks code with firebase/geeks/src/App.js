@@ -40,6 +40,7 @@ function App() {
           <Route path="reservations" element={<Reservations />} />
           <Route path="settings" element={<Settings />} />
           
+          
         </PrivateRoute>} />
 
         <Route path="/admin/*" element={<AdminPrivateRoute element={AdminBar}>

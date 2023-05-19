@@ -41,11 +41,27 @@ function Subscription() {
       {authUserData.isSub ? (
       
 
-    <div>
+      <div className="w-full lg:h-64  items-center grid grid-cols-1 bg-white shadow-lg rounded-lg overflow-hidden p-6 transform transition duration-500 hover:-translate-y-2">
+      <div className="flex items-center mb-4">
+       
+        <div className="ml-2">
+          <h2 className="text-2xl font-semibold text-gray-900">You are subscribed</h2>
+          <p className="text-lg text-gray-500">Your remaning hours {authUserData.RemaningHours}</p>
+          <p className="text-lg text-gray-500">Your reservations number {authUserData.Reservations.length}</p>
 
-      You are subscribed
+          
+        </div>
       </div>
-
+      <div className="flex items-center justify-between">
+        <div className="text-sm text-gray-500">
+        <span className="font-semibold">Happy to serve you at geeks hub</span>
+        </div>
+        <div className="flex items-center">
+          <div className="w-4 h-4 bg-yellow-400 rounded-full animate-pulse mr-2"></div>
+          <p className="text-lg text-yellow-500 font-semibold">Subscribed</p>
+        </div>
+      </div>
+    </div>
       ) : authUserData.subRequest? (
         <div className="w-full lg:h-64  items-center grid grid-cols-1 bg-white shadow-lg rounded-lg overflow-hidden p-6 transform transition duration-500 hover:-translate-y-2">
   <div className="flex items-center mb-4">
