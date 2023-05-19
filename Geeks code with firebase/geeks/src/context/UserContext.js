@@ -5,6 +5,8 @@ import { getDoc  } from 'firebase/firestore'
 import { doc } from "firebase/firestore";
 import { db } from "../config/firebase";
 import { AuthContext } from "./Auth";
+import { useContext } from "react";
+import { getAuth } from "firebase/auth";
 
 
 
@@ -14,60 +16,31 @@ export const UserProvider = ({children}) => {
 
   
 
-   // data for the authourized user   
-      const [authUserData , setauthUserData ] = useState({})
+  const [authUserData, setAuthUserData] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [update, setUpdate] = useState(5);
+  const { user } = useContext(AuthContext);
 
-      const [loading, setloading] = useState(true)
-      const [update, setUpdate] = useState(5)
+  const getUser = async () => {
+    const userDocRef = doc(db, "users", auth.currentUser.uid);
+    const userDocSnap = await getDoc(userDocRef);
+    if (userDocSnap.exists()) {
+      setAuthUserData(userDocSnap.data());
+      // do something with the user document
+      setLoading(false);
+    } else {
+      console.log('User document does not exist');
+    }
+  }
 
-
-      const { user, setUser } = React.useContext(AuthContext);
-
-
-   
-   
-
-
-    useEffect (() => {
-       
-        
-        const getUser = async () => {
-
-            const userDocRef = doc(db, "users", auth.currentUser.uid);
-            const userDocSnap = await getDoc(userDocRef);
-            if (userDocSnap.exists()) {
-              setauthUserData(userDocSnap.data());
-              // do something with the user document
-              setloading(false)
-
-            } else {
-              console.log('User document does not exist');
-            }
-          
-        }
-
-if(user)    {
-
-        getUser()
-}
-else {
-        setloading(false)
-        setauthUserData({})
-
-
-    } 
-
-    console.log("authUserData")
-
-    console.log(authUserData)
-
-       
-      
-        
-        
-    } 
-    , [user, update])
-
+  useEffect(() => {
+    if (user) {
+      getUser();
+    } else {
+      setLoading(false);
+      setAuthUserData({});
+    }
+  }, [user, update]);
     
 
     if (loading) {
@@ -82,7 +55,7 @@ else {
   </div>
   }
     return (
-        <UserContext.Provider value={{authUserData,setauthUserData,update,setUpdate}}>
+        <UserContext.Provider value={{authUserData,setAuthUserData,update,setUpdate}}>
             {children}
         </UserContext.Provider>
 
