@@ -5,7 +5,6 @@ import Footer from "./components/Footer";
 export default function Error() {
   return (
     <div className="bg-white dark:bg-black">
-      <Header />
      
       <div className="flex flex-col items-center justify-center px-10 bg-white h-[90vh] dark:bg-black md:flex-row md:space-x-6">
         <div className="space-x-2">
@@ -27,7 +26,6 @@ export default function Error() {
           </a>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

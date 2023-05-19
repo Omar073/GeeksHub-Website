@@ -10,6 +10,9 @@ export default function SubscribersAdmin() {
   const [sub, setSub] = useState([]);
   const [cashData, setCashData] = useState(0);
   const[showModal,setShowModal]=useState(false)
+  const [datacopy, setDatacopy] = useState([]);
+ 
+  const[inputValue,setInputValue]=useState('')
 
   useEffect(() => {
     const getUsers = async () => {
@@ -23,9 +26,9 @@ export default function SubscribersAdmin() {
         }))
         .filter((user) => user.isSub === true);
 
-      console.log(filteredData);
 
       setData(filteredData);
+      setDatacopy(filteredData);
     };
 
     const getSub = async () => {
@@ -46,6 +49,40 @@ export default function SubscribersAdmin() {
     getUsers();
     getSub();
   }, []);
+
+
+
+  useEffect(() => {
+    const filterData = () => {
+      const searchedUser = data
+        .map((doc) => ({
+          id: doc.id,
+          ...doc,
+        }))
+        .filter(
+          (user) =>
+            (user.Email && user.Email.includes(inputValue)) ||
+            (user.FirstName && user.FirstName.includes(inputValue)) ||
+            (user.LastName && user.LastName.includes(inputValue))
+        );
+      setData(searchedUser);
+    };
+    const ahmed = async () => {
+
+    if (inputValue !== "") {
+      filterData();
+    }
+    else {
+      await setData(datacopy);
+    }
+    };
+
+    ahmed();
+
+  
+  
+  }, [inputValue, data]);
+  
 
   const handlePrime = async (id) => {
     const userRef = doc(db, "users", id);
@@ -140,6 +177,26 @@ export default function SubscribersAdmin() {
         subRequest: false,
         RemaningHours: 0,
     });
+    };
+
+
+    const searchUser = async () => {
+       
+      const searchedUser = data
+        .map((doc) => ({
+          id: doc.id,
+          ...doc,
+        }))
+        .filter(
+          (user) =>
+            (user.Email && user.Email.includes(inputValue)) ||
+            (user.FirstName && user.FirstName.includes(inputValue)) ||
+            (user.LastName && user.LastName.includes(inputValue))
+        );
+    
+     setData(searchedUser);
+    
+      
     };
 
 
@@ -270,6 +327,11 @@ export default function SubscribersAdmin() {
 
 
           {data.length > 0 ? (
+            <div>
+             <div className="grid grid-cols-2 gap-5">
+             <input onChange={(e) => setInputValue(e.target.value)} className="w-full h-10 px-3 mb-2 text-base text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" placeholder="Search by name" />
+             <button onClick={searchUser  } className= " w-1/4 h-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >Search by Name</button>
+             </div>
             <table className=" w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <caption className="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
                 GeeksHub Subscribers List
@@ -292,9 +354,7 @@ export default function SubscribersAdmin() {
                   <th scope="col" className="px-6 py-3">
                     Remaining Hours
                   </th>
-                  <th scope="col" className="px-6 py-3">
-                    Action
-                  </th>
+                 
                 </tr>
               </thead>
               <tbody>
@@ -309,21 +369,22 @@ export default function SubscribersAdmin() {
                     <td className="px-6 py-4">{user.Email}</td>
                     <td className="px-6 py-4">{user.PhoneNumber}</td>
                     <td className="px-6 py-4">{user.RemaningHours}</td>
-                    <td className="px-6 py-4">
-                      <a
-                        href="#"
-                        className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                      >
-                        Edit
-                      </a>
-                    </td>
+                  
                   </tr>
                 ))}
               </tbody>
             </table>
+            </div>
           ) : (
+            <div>
+              <div className="grid grid-cols-2 gap-5">
+             <input onChange={(e) => setInputValue(e.target.value)} className="w-full h-10 px-3 mb-2 text-base text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" placeholder="Search by name" />
+             <button onClick={searchUser  } className= " w-1/4 h-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >Search by Name</button>
+             </div>
             <div className="flex justify-center items-center h-96">
+              
               <h1 className="text-3xl text-gray-500">No Subscribers Yet</h1>
+            </div>
             </div>
           )}
         </div>

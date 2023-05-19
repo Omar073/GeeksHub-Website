@@ -35,7 +35,7 @@ export default function NewUser() {
           const user = userCredential.user;
           console.log(user)
           await setDoc(doc(users, user.uid), {
-            Name : FirstName + ' ' + LastName,
+            Name : FirstName + '  ' + LastName,
             Email: Email,
             PhoneNumber: PhoneNumber,
             Faculty: Faculty,

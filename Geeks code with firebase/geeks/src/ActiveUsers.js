@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { db } from "./config/firebase";
-
-import { addDoc, arrayUnion, collection } from "firebase/firestore";
+import {RiUserFollowFill} from "react-icons/ri";
+import { collection } from "firebase/firestore";
 import { getDocs } from "firebase/firestore";
 import { doc, updateDoc } from "firebase/firestore";
 import { UserContext } from "./context/UserContext";
 import { useContext } from "react";
 import { getDoc } from "firebase/firestore";
 import { setDoc } from "firebase/firestore";
+import {RiUserStarFill} from "react-icons/ri";
+import {FaMoneyBillWave} from "react-icons/fa";
 
 function ActiveUsers() {
   //this is the user collection in firestore
@@ -63,7 +65,7 @@ function ActiveUsers() {
           id: doc.id,
           ...doc.data(),
         }))
-        .filter((user) => user.isSub === true&&user.isActive === true);
+        .filter((user) => user.isSub === true &&user.isActive === true);
         setSubData(filteredData);
       }
 
@@ -71,7 +73,7 @@ function ActiveUsers() {
     getUsers();
     getSubUsers();
     setUpdate(update + 1);
-  }, []);
+  }, [data,]);
 
   // this is the function that is used to update the user is active status to false and update the price in the firestore and show the modal
   const updateUserActivity = async (id) => {
@@ -107,10 +109,11 @@ function ActiveUsers() {
           trial.RemaningHours = 0;
           trial.isSub = false;
           
-          price = time * 10;
+          price = Math.round(time * 10) ;
         }
       } else {
-        price = time * 10;
+        price =  Math.round(time * 10) ;
+       
       }
       console.log("price i" + price);
 
@@ -149,6 +152,7 @@ function ActiveUsers() {
         await updateDoc(cashRef, {
           cashcollected: cash.cashcollected + price,
           Reservations: cash.Reservations + 1,
+
         });
       } else {
         await setDoc(doc(db, "cash", docId), {
@@ -156,6 +160,7 @@ function ActiveUsers() {
           Reservations: 1,
           SubscribersSecoundry: 0,
           SubscribersPrimary: 0,
+          date:`${day}/${month}/${year}`,
         });
       }
 
@@ -179,20 +184,7 @@ function ActiveUsers() {
             
             <div className="flex items-start rounded-xl bg-white p-4 shadow-lg">
               <div className="flex h-12 w-12 items-center justify-center rounded-full border border-red-100 bg-red-50">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-red-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                  />
-                </svg>
+               <RiUserFollowFill className="h-6 w-6 text-red-400"/>
               </div>
 
               <div className="ml-4">
@@ -209,20 +201,7 @@ function ActiveUsers() {
             </div>
             <div className="flex items-start rounded-xl bg-white p-4 shadow-lg">
               <div className="flex h-12 w-12 items-center justify-center rounded-full border border-indigo-100 bg-indigo-50">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-indigo-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
-                  />
-                </svg>
+               <RiUserStarFill className="h-6 w-6 text-indigo-400"/>
               </div>
 
               <div className="ml-4">
@@ -233,7 +212,7 @@ function ActiveUsers() {
                   Last authored 1 day ago
                 </p>
                 </>
-                : <h2 className="font-semibold">No Active Users</h2>}
+                : <h2 className="font-semibold">No Active Subscibed Users</h2>}
               </div>
             </div>
           </div>
@@ -250,10 +229,16 @@ function ActiveUsers() {
                   {/*content*/}
                   <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                     {/*header*/}
-                    <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+                    <div className="flex items-start  gap-2 justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+                      
+                      <div>
+                      <FaMoneyBillWave className="h-8 w-8 text-green-500  " />
+                      </div>
+                      <div>
                       <h3 className="text-3xl font-semibold">
-                        {authUserData.FirstName} {authUserData.LastName}
+                        Cash Collected
                       </h3>
+                      </div>
                       <button
                         className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                         onClick={() => setShowModal(false)}
@@ -265,7 +250,7 @@ function ActiveUsers() {
                     </div>
                     {/*body*/}
                     <div className="relative p-6 flex-auto">
-                      Price to be paid IS : {displayPrice}$
+                      Total Cash : {displayPrice}$
                     </div>
                     {/*footer*/}
                     <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
@@ -291,18 +276,7 @@ function ActiveUsers() {
             <table class=" w-full  text-sm text-left text-gray-500 dark:text-gray-400 ">
               <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                  <th scope="col" class="p-4">
-                    <div class="flex items-center">
-                      <input
-                        id="checkbox-all-search"
-                        type="checkbox"
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                      />
-                      <label for="checkbox-all-search" class="sr-only">
-                        checkbox
-                      </label>
-                    </div>
-                  </th>
+                 
                   <th scope="col" class="px-6 py-3">
                     user name
                   </th>
@@ -324,18 +298,7 @@ function ActiveUsers() {
                 {/*         Users form data being mapped herein the table body           */}
                 {data.map((user) => (
                   <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <td class="w-4 p-4">
-                      <div class="flex items-center">
-                        <input
-                          id="checkbox-table-search-1"
-                          type="checkbox"
-                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                        />
-                        <label for="checkbox-table-search-1" class="sr-only">
-                          checkbox
-                        </label>
-                      </div>
-                    </td>
+                   
                     <th
                       scope="row"
                       class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
@@ -343,7 +306,7 @@ function ActiveUsers() {
                       {user.FirstName} {user.LastName}
                     </th>
                     <td class="px-6 py-4">{user.Email}</td>
-                    <td class="px-6 py-4"></td>
+                    <td class="px-6 py-4">{user.Reservations[user.Reservations.length-1].startTimeHour}h  {user.Reservations[user.Reservations.length-1].startTimeMin}m </td>
                     <td class="px-6 py-4"></td>
                     <td class="px-6 py-4">
                       <button
