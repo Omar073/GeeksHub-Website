@@ -66,57 +66,25 @@ const [empData,setEmpData] = useState({});
 
         
     
-    }, [  ])
+    }, [])
 
-//this is the function that is used to update the user is active status to false and update the price in the firestore and show the modal
-const updateEmployeeWork = async (id) => {
-    const userRef = doc(db, 'employees', id);
-    await updateDoc(userRef, {
-        isWorking: false,
-        thisMonth : activeShift.thisMonth + 1,
+    const updateEmployeeWork = async (id) => {
+      const userRef = doc(db, 'employees', id);
+      await updateDoc(userRef, {
+          isWorking: false,
+          thisMonth : activeShift.thisMonth + 1,
+  
+      
+      });
+  
+      await setUpdate(update + 1);
+      setShowModal(true);
+  
+  }
 
-    
-    });
-
-    await setUpdate(update + 1);
-    setShowModal(true);
-
-}
 
 
 // this is the function for the admin to add a new employee 
-const addEmployee = async () => {
-  const data = await getDocs(users);
-  const filteredData = data.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data()
-})).filter((user) => user.Email === newEmployeeEmail && user.isEmployee === false && user.isAdmin === false);
-
-await setEmpData(filteredData[0]);
-
-if (filteredData.length > 0) {
-    
-    await  setDoc(doc(db, "employees", empData.id),{
-        Name : empData.FirstName,
-        Email : empData.Email,
-        isWorking : false,
-        id : empData.id,
-        thisMonth : 0,
-        prevMonth : 0,
-
-    }
-
-   
-
-    );
-    setShowAddEmployeeModal(false);
-  }
-  else {
-    console.log('not filtered');
-    alert('this email is not found or is already an employee');
-  }
-
-}
 
 
 
@@ -182,69 +150,7 @@ if (filteredData.length > 0) {
 
 
 {/* this is the add employee modal */}
-{showAddEmployeeModal ? (
-        <>
 
-          <div
-
-            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
-          >
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
-
-              {/*content*/}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                {/*header*/}
-                <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                  <h3 className="text-3xl font-semibold">
-                    Add Employee
-                  </h3>
-                  <button
-
-                    className="p-1 ml-auto  border-2  text-red-600  float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-
-                    onClick={() => setShowAddEmployeeModal(false)}
-
-                  >
-
-                   x
-
-                  </button>
-                </div>
-
-                {/*body*/}
-                <div className="relative p-6 flex-auto">
-                <div className="flex flex-col">
-                <label className="text-gray-700">Email</label>
-                <input
-                  type="text"
-                  className="border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                  placeholder="Email"
-                  onChange={(e) => setNewEmployeeEmail(e.target.value)}
-                />
-              </div>
-
-                </div>
-
-                {/*footer*/}
-                <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-
-                  <button
-                    className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-
-                    type="button"
-                    onClick={() => addEmployee()}
-                  >
-                    Add Employee
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-
-        </>
-      ) : null}
 
 
 
