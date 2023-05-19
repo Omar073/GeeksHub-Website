@@ -56,15 +56,6 @@ export default function Login() {
   //     const userDocSnap = await getDoc(userDocRef);
   //     setUpdate(update + 1);
 
-  //     if (userDocSnap.exists()) {
-  //       console.log('User document exists');
-  //       if (userDocSnap.data().isAdmin) {
-  //         navigate('/admin');
-  //       } else if (userDocSnap.data().isEmployee) {
-  //         navigate('/employee');
-  //       } else {
-  //         navigate('/home');
-  //       }
 
   // };
 
